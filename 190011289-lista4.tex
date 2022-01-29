@@ -1,0 +1,184 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{makeidx,graphics}
+\usepackage[dvips]{graphicx}
+%\usepackage[latin1]{inputenc}
+%\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{ae}
+\usepackage{indentfirst}
+\usepackage{amsbsy}
+\usepackage{fancyhdr}
+\usepackage{pstricks}
+\usepackage[all]{xy}
+\usepackage{wrapfig}
+\usepackage[pdfstartview=FitH,backref,colorlinks,bookmarksnumbered,bookmarksopen,linktocpage,urlcolor=blue,
+linkcolor=cyan]{hyperref}
+\usepackage{bussproofs}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{amsbsy}
+\usepackage{url}
+%\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+
+\usepackage{esint}
+
+\newtheorem{definition}{Definição}
+%\newtheorem{example}{Exemplo}
+\newtheorem{lema}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem{corolario}{Corolário}
+\newtheorem*{obs}{Observação}
+
+\setlength{\topmargin}{-1.0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{10.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\baselineskip}{12mm}
+
+\newcommand{\dx}{\ \mathrm{d} x }
+\newcommand{\dy}{\ \mathrm{d} y }
+\newcommand{\dz}{\ \mathrm{d} z }
+\newcommand{\du}{\ \mathrm{d} u }
+\newcommand{\dv}{\ \mathrm{d} v }
+\newcommand{\dr}{\ \mathrm{d} r }
+\newcommand{\dt}{\ \mathrm{d} t }
+\newcommand{\dteta}{\ \mathrm{d} \theta }
+\newcommand{\dro}{\ \mathrm{d} \rho }
+\newcommand{\dfi}{\ \mathrm{d} \phi }
+\newcommand{\ds}{\ \mathrm{d} s }
+\newcommand{\dS}{\ \mathrm{d} S }
+\newcommand{\dq}{\ \mathrm{d} q }
+\newcommand{\dif}{\mathrm{d}}
+
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\diverg}{div}
+
+\graphicspath{{img/}}
+
+\renewcommand{\sectionmark}[1]{ \markright{ \thesection.\ #1}}
+
+\title{\textbf{Variável Complexa 1}\\ Lista 4}
+\author{Caio Tomás de Paula}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\begin{enumerate}
+		\item Temos
+		$$
+		\exp\left( \frac{1+i}{1-i} \right) = \exp\left( \frac{(1+i)^2}{2} \right) = \exp(i) = \cos(1) + i\sin(1)
+		$$
+		que é representado, no plano cartesiano, como abaixo:
+		
+		\begin{figure}[h!]
+			\centering 
+			\begin{tikzpicture}
+			\draw (0,0)--(1.25,2.165) node [at end]{$\bullet$};
+			\draw[->] (0:1) arc (0:60:1);
+			\node [at= {(1.25,2.165)}, above]{$\exp(i)$};
+			\draw[-latex] (-1,0)--(4,0) node [at end,right]{$\Re$};
+			\draw[-latex] (0,-1)--(0,4) node [at end,above]{$\Im$};
+			\node [at= {(1.5,0.5)}]{$1\text{ rad}$};
+			\end{tikzpicture}
+		\end{figure}
+		
+		\item Se $n=0$, então $\displaystyle{ \exp\left( \frac{1}{1+1} \right) = \exp(1/2) }$ está bem definida em todo $\mathbb{C}$. Se $n\in\mathbb{Z}\setminus\left\{0\right\}$, então a função estará bem definida em todo o $\mathbb{C}$ com exceção das raízes $n$-ésimas de $-1$, ou seja, estará bem definida em
+		$$
+		\mathbb{C}\setminus\left\{ z\in\mathbb{C} : z^n = -1 \right\} = \mathbb{C}\setminus\left\{ z\in\mathbb{C} : z = \exp\left( \frac{(2k+1)\pi}{n}i \right), k\in\mathbb{Z}  \right\}
+		$$
+		
+		\item Pela Regra da Cadeia, segue que a derivada de $\displaystyle{ \exp\left( \frac{1}{z^n+1} \right) }$ é
+		$$
+		\exp\left( \frac{1}{z^n + 1} \right)\cdot\frac{-1}{(z^n+1)^2}\cdot nz^{n-1}.
+		$$
+		
+		\item Seja $z = x+iy, x,y\in\mathbb{R}$. Temos que
+		$$
+		\frac{1}{z} = \frac{1}{x+iy} = \frac{x-iy}{x^2+y^2},
+		$$
+		de modo que
+		$$
+		f(x+iy) = \exp\left( \frac{1}{z} \right) = \exp\left(\frac{x}{x^2+y^2}\right)\cdot \left( \cos\left( \frac{y}{x^2+y^2}\right) - i\sin\left( \frac{y}{x^2+y^2}\right) \right).
+		$$
+		Tomando o limite pelo caminho $x = t, y = 0$, com $t$ se aproximando de $0$ pela direita (ou seja, nos aproximando da origem sobre o eixo real, por valores positivos), temos
+		$$
+		\lim\limits_{z\to 0}f(z) = \lim\limits_{t\to 0^{+}}e^{1/t} = +\infty
+		$$
+		e, portanto, $\displaystyle{\lim\limits_{z\to 0}f(z)}$ não existe.
+		
+		\item 
+		\begin{enumerate}
+			\item Note que 
+			$$
+			1 = (e^z)'(0) = \lim\limits_{z\to 0} \frac{e^z - e^0}{z - 0} = \lim\limits_{z\to 0} \frac{e^z - 1}{z}.
+			$$ 
+			de modo que o limite desejado existe e vale $1$.
+			
+			\item Seja $z = x+iy, x,y\in\mathbb{R}$. Temos
+			$$
+			\frac{\sin|z|}{z} = \frac{\sin\left(\sqrt{x^2+y^2}\right)}{x+iy} = \frac{x}{x^2+y^2}\sin\left( \sqrt{x^2+y^2} \right) - i\cdot\frac{y}{x^2+y^2}\sin\left( \sqrt{x^2+y^2} \right).
+			$$
+			Se tomarmos o limite pelo caminho $x = 0, y = t$, teremos
+			\begin{align*}
+			\lim\limits_{z\to 0}\frac{\sin|z|}{z} &= \lim\limits_{t\to 0} -i\cdot\frac{1}{t}\sin\left( \sqrt{t^2} \right) \\ 
+			&= -i\lim\limits_{t\to 0}\frac{\sin|t|}{t}.
+			\end{align*}
+			Este último limite vale $-i$ se $t\to 0^+$ e $i$ se $t\to 0^-$. Logo, como o limite difere por caminhos distintos, segue que ele não existe.
+			
+			\item Note que
+			$$
+			\lim\limits_{z\to 1} \frac{\overline{z} - 1}{z - 1} = \lim\limits_{z\to 1} \frac{\overline{z} - \overline{1}}{z - 1}.
+			$$
+			Portanto, se o limite existisse, ele seria a derivada da função dada por $f(z) = \overline{z}$ em $z=1$. Mas essa função não é derivável em lugar algum, logo o limite não existe.
+			
+			\item Defina $S_+$ e $S_-$ como as duas semirretas opostas de origem $(-1,0)$ da reta $x=-1$. Observe o diagrama abaixo.
+			
+			\begin{figure}[h!]
+				\centering 
+				\begin{tikzpicture}
+				\draw[color=red] (-1,0.1)--(-1,4);
+				\draw[color=red] (-1,0.1)--(-1,-4);
+				\draw[-latex] (-3,0)--(4,0) node [at end,right]{$\Re$};
+				\draw[-latex] (0,-4)--(0,4) node [at end,above]{$\Im$};
+				\draw[fill=white!30] (-1,0) circle (0.11) ;
+				\node [at= {(-1,3.5)}, left]{$S_+$};
+				\node [at= {(-1,-3.5)}, left]{$S_-$};
+				\node [at= {(-1,0)}, below left]{$-1$};
+				\node [at= {(-1,1)}, left]{$y$};
+				\node [at= {(-1,-1)}, left]{$-y$};
+				\draw[dashed] (0,0)--(-1,1);
+				\draw[dashed] (0,0)--(-1,-1);
+				\draw[-latex] (0:0.7) arc (0:135:0.7);		
+				\draw[-latex] (0:0.7) arc (0:-135:0.7);	
+				\node [at= {(1.7,0.8)}, left]{$\pi-\alpha$};
+				\node [at= {(1.7,-0.8)}, left]{$-\pi+\alpha$};	
+				\end{tikzpicture}
+			\end{figure}
+		Sabemos que 
+		$$
+		\log(z) = \ln|z| + i\arg(z),
+		$$
+		sendo $\arg(z)$ o ramo principal do argumento. Da figura, observe que se $z\to -1$ sobre $S_+$, então $\arg(z)\to \pi$, enquanto que se $z\to -1$ sobre $S_-$, então $\arg(z)\to -\pi$. Como os limites diferem, segue que não existe $\displaystyle{\lim\limits_{z\to -1}}\arg(z)$ e, consequentemente, não existe $\displaystyle{\lim\limits_{z\to -1}}\log(z)$.
+			
+		\end{enumerate}
+	
+		\item Não. Note que
+		\begin{align*}
+		|\sin(z)| = |\cosh y\sin x - i\sinh y\cos x| &= \cosh^2 y\sin^2 x + \sinh^2 y\cos^2 x \\ 
+		&= (1+\sinh^2 y)\sin^2 x + \sinh^2 y\cos^2 x \\ 
+		&= \sin^2 x + \sinh^2 y \\
+		&\geq \sinh^2y
+		\end{align*}
+		Como $\sinh^2 y\xrightarrow{y\to\infty}\infty$, é claro que $|\sin(z)|$ não pode ser limitado em todo $\mathbb{C}$. 
+	\end{enumerate} 
+\end{document} 

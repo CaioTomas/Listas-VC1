@@ -1,0 +1,290 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{makeidx,graphics}
+\usepackage[dvips]{graphicx}
+%\usepackage[latin1]{inputenc}
+%\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{ae}
+\usepackage{indentfirst}
+\usepackage{amsbsy}
+\usepackage{fancyhdr}
+\usepackage{pstricks}
+\usepackage[all]{xy}
+\usepackage{wrapfig}
+\usepackage[pdfstartview=FitH,backref,colorlinks,bookmarksnumbered,bookmarksopen,linktocpage,urlcolor=blue,
+linkcolor=cyan]{hyperref}
+\usepackage{bussproofs}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{amsbsy}
+\usepackage{url}
+\usepackage{float} 
+%\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+
+\usepackage{esint}
+
+\newtheorem{definition}{Definição}
+%\newtheorem{example}{Exemplo}
+\newtheorem{lema}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem{corolario}{Corolário}
+\newtheorem*{obs}{Observação}
+
+\setlength{\topmargin}{-1.0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{10.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\baselineskip}{12mm}
+
+\newcommand{\dx}{\ \mathrm{d} x }
+\newcommand{\dy}{\ \mathrm{d} y }
+\newcommand{\dz}{\ \mathrm{d} z }
+\newcommand{\du}{\ \mathrm{d} u }
+\newcommand{\dv}{\ \mathrm{d} v }
+\newcommand{\dr}{\ \mathrm{d} r }
+\newcommand{\dt}{\ \mathrm{d} t }
+\newcommand{\dteta}{\ \mathrm{d} \theta }
+\newcommand{\dro}{\ \mathrm{d} \rho }
+\newcommand{\dfi}{\ \mathrm{d} \phi }
+\newcommand{\ds}{\ \mathrm{d} s }
+\newcommand{\dS}{\ \mathrm{d} S }
+\newcommand{\dq}{\ \mathrm{d} q }
+\newcommand{\dif}{\mathrm{d}}
+
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\diverg}{div}
+
+\graphicspath{{img/}}
+
+\renewcommand{\sectionmark}[1]{ \markright{ \thesection.\ #1}}
+
+\title{\textbf{Variável Complexa 1}\\ Lista 6}
+\author{Caio Tomás de Paula}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\begin{enumerate}		
+		\item Temos
+		$$
+		\int_{\gamma}F \ ds = \int_{\gamma} u dx + v dy, 
+		$$
+		enquanto que
+		$$
+		\int_{\gamma}f \ dz = \int_{\gamma} udx - vdy + i\int_{\gamma} udy+vdx.
+		$$
+		Podemos notar que a integral de linha de $F$ nos retorna um número real, enquanto que a integral de linha de $f$ nos retorna um número complexo. Podemos notar também que a integral de $f$ é, na verdade, composta de duas integrais de linha (reais). Além disso, a integral de linha real é um operador de $\mathbb{R}^2$ em $\mathbb{R}$, i.e., ela leva um vetor em um número real, ``diminuindo" a dimensão. A integral de linha complexa, por outro lado, opera de $\mathbb{C}$ em $\mathbb{C}$, i.e., leva um vetor em outro, ``preservando" a dimensão. Por fim, a integral de linha real tem interpretações motivações físicas (trabalho, fluxo, circulação), enquanto que a contraparte complexa não.
+		
+		\item Fazendo $z = x+iy, x,y\in\mathbb{R}$, temos que
+		$$
+		f(z) = (x^2 - y^2) + i(2xy),
+		$$
+		de modo que
+		$$
+		F(x,y) = \left( x^2 - y^2; 2xy \right).
+		$$
+		Parametrizando $\partial\mathbb{D}$ por $P(t) = (\cos\theta, \sin\theta)$, temos que a integral de linha real é
+		\begin{align*}
+		\int_{\partial\mathbb{D}} \langle F(P(t)), P'(t) \rangle dt &= \int_{0}^{2\pi}-\cos 2\theta\sin\theta + \sin 2\theta\cos\theta \ d\theta \\
+		&= \int_{0}^{2\pi}\sin\theta \ d\theta = 0.
+		\end{align*} 
+		Agora, parametrizando $\partial\mathbb{D}$ por $e^{it}, t\in[0,2\pi]$, temos que a integral complexa é
+		\begin{align*}
+		\int_{\partial\mathbb{D}} z^2dz &= \int_{0}^{2\pi} ie^{3it}dt \\ 
+		&= \frac{1}{3}e^{3it}\Bigg|_{0}^{2\pi} \\
+		&= 0. 
+		\end{align*}
+		De fato, aqui poderíamos ter aplicado o Teorema de Cauchy-Goursat bis para obter o resultado, pois $f(z) = z^2$ é inteira, $\mathbb{C}$ é estrelado e $\partial\mathbb{D}$ é um caminho fechado suave.
+		
+		\item Como $h$ é contínua, valem as seguintes igualdades:
+		\begin{align*}
+		\lim\limits_{r\to 0}\int_{\gamma_r}\frac{h(z)}{z}dz &= \lim\limits_{r\to 0}\int_{0}^{2\pi}\frac{h(re^{it})}{re^{it}}ire^{it}dt \\
+		&= i\lim\limits_{r\to 0}\int_{0}^{2\pi}h(re^{it})dt \\
+		&= i\int_{0}^{2\pi}\lim\limits_{r\to 0}h(re^{it})dt \\
+		&= i\int_{0}^{2\pi}h(0)dt \\
+		&= 2\pi ih(0).
+		\end{align*}
+		
+		\item Como $f$ é holomorfa em um domínio estrelado e a integral é ao longo de um caminho fechado suave por partes, segue do Teorema de Cauchy-Goursat bis que 
+		$$
+		\int_{\partial R}f(z)dz = 0.
+		$$
+		Outra solução possível seria notar que sendo $\partial R$ como abaixo		
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}
+			\draw (0,0)--(4,0)--(4,2)--(0,2)--cycle;
+			\node at (-0.7,1) {$\partial R$};
+			\draw[-latex] (0,0)--(0,1);
+%			\draw[-latex](0,0)--(3,0)node[midway,below]{$\textcolor{green}{v}$};
+%			\draw[-latex](0,0)--(1,1)node[at end,above]{$\textcolor{red}{u}\times \textcolor{green}{v}$};
+%			\draw[-latex](0,0)--(0,2)node[above,left]{$\textcolor{red}{u}$};
+			\end{tikzpicture}
+		\end{figure}
+		podemos dividi-lo em dois triângulos
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}
+			\draw (0,0)--(0,2)--(4,2)--cycle;
+			\node at (-0.5,2) {$\partial T_1$};
+			\draw[-latex] (0,0)--(2,1);
+			\draw (0.5,0)--(4.5,0)--(4.5,2)--cycle;
+			\node at (5,0) {$\partial T_2$};
+			\draw[-latex] (4.5,2)--(2.5,1);
+			\end{tikzpicture}
+		\end{figure}
+	   e aplicar o Teorema de Cauchy-Goursat a cada um deles, obtendo
+	   $$
+	   \int_{\partial R}f(z)dz = \int_{\partial T_1}f(z)dz + \int_{\partial T_2}f(z)dz = 0.
+	   $$
+		
+		\item\begin{itemize}
+			\item Segue da simetria da integral. De fato, se $\xi<0$, então $-\xi>0$ e temos
+			\begin{align*}
+			\mathcal{F}(f)(\xi) &= \int_{-\infty}^{\infty}e^{-\pi x^2}e^{2\pi ix\xi}dx \\
+			&= \int_{-\infty}^{\infty}e^{-\pi x^2}e^{2\pi i(-x)(-\xi)}dx \\
+			&= -\int_{\infty}^{-\infty}e^{-\pi u^2}e^{2\pi iu(-\xi)}du \\
+			&= \int_{-\infty}^{\infty}e^{-\pi x^2}e^{2\pi ix(-\xi)}dx.
+			\end{align*}
+			
+			\item O contorno é esboçado abaixo. 
+			\begin{figure}[H]
+				\centering 
+				\begin{tikzpicture}
+				\draw (4,0)--(4,3)--(-4,3)--(-4,0)--cycle;
+				\draw[-latex] (-5,0)--(5,0) node [at end,right]{$\Re$};
+				\draw[-latex] (0,-2)--(0,4) node [at end,above]{$\Im$};
+				\node[at={(4,0)}, below]{$R$};
+				\node [at= {(4,3)}, above]{$R+i\xi$};
+				\node[at={(-4,3)}, above]{$-R+i\xi$};
+				\node [at= {(-4,0)}, below]{$-R$};
+				\node [at={(4,1.5)}, right]{$\gamma_R$};
+				\end{tikzpicture}
+			\end{figure}
+			
+			\item Defina $g(z) = e^{-\pi z^2}e^{2\pi i z\xi}$. Ela é inteira, i.e., holomorfa em todo o $\mathbb{C}$, que é um domínio estrelado, e $\gamma_R$ é um caminho fechado suave por partes. Segue, então, que podemos aplicar o exercício anterior para obter
+			$$
+			\int_{\gamma_R} g(z)dz = 0, \ \forall R>0.
+			$$
+			Por outro lado, escrevendo $\gamma_R = \gamma_1*\gamma_2*\gamma_3*\gamma_4$, com
+			\begin{align*}
+			\gamma_1(t) &= R+it, \ 0\leq t\leq \xi \\ 
+			\gamma_2(t) &= -t+i\xi, \ -R\leq t\leq R \\
+			\gamma_3(t) &= -R+i(\xi - t), \ 0\leq t\leq \xi \\
+			\gamma_4(t) &= t, \ -R\leq t\leq R,
+			\end{align*}
+			temos
+			\begin{align*}
+			0 = \int_{\gamma_R}g(z)dz &= \sum_{i=1}^{4}\int_{\gamma_i}g(z)dz \\
+			&= I_1(R) + I_2(R) + \int_{\gamma_2}g(z)dz + \int_{\gamma_4}g(z)dz \\
+			&= I_1(R) + I_2(R) - \int_{-R}^{R}e^{-\pi (-t+i\xi)^2}e^{2\pi i(-t+i\xi)}dt  + \int_{-R}^{R}e^{-\pi t^2}e^{2\pi it\xi}  dt \\
+			&= I_1(R) + I_2(R) - e^{-\pi\xi^2}\int_{-R}^{R}e^{-\pi t^2}dt + \mathcal{F}(f)(\xi),
+			\end{align*}
+			sendo
+			\begin{align*}
+			I_1(R) &= \int_{\gamma_1} g(z)dz \\
+			I_2(R) &= \int_{\gamma_3} g(z)dz.
+			\end{align*}
+			
+			\item Usando o Lema Técnico, temos
+			\begin{align*}
+			|I_1(R)| &= \left| \int_{0}^{\xi}ie^{-\pi R^2}e^{-2\pi itR}e^{\pi t^2}e^{2\pi iR\xi}e^{-2\pi t\xi} dt \right| \\
+			&= \left| ie^{-\pi R^2}e^{2\pi iR\xi}\int_{0}^{\xi}e^{-2\pi itR}e^{\pi t^2}e^{-2\pi t\xi} dt \right| \\
+			&= e^{-\pi R^2} \left|\int_{0}^{\xi}e^{-2\pi itR}e^{\pi t^2}e^{-2\pi t\xi} dt \right| \\
+			&\leq e^{-\pi R^2}K_1\xi, \ K_1\in\mathbb{R}_{+} \\
+			&= C_1e^{-\pi R^2}, \ C_1 = K_1\xi.
+			\end{align*}
+			Analogamente, temos
+			\begin{align*}
+			|I_2(R)| &= \left| \int_{0}^{\xi}-ie^{-\pi R^2}e^{2\pi iR(\xi -t)}e^{\pi (\xi -t)^2}e^{-2\pi iR\xi}e^{-2\pi \xi(\xi - t)} dt \right| \\
+			&= \left| \int_{0}^{\xi}-ie^{-\pi R^2}e^{2\pi iR\xi}e^{-2\pi iRt}e^{\pi \xi^2}e^{-2\pi\xi t}e^{\pi t^2}e^{-2\pi iR\xi}e^{-2\pi \xi^2}e^{2\pi\xi t} dt \right| \\
+			&= \left| -ie^{-\pi R^2}e^{-\pi\xi^2}\int_{0}^{\xi}e^{-2\pi itR}e^{-2\pi\xi t}e^{\pi t^2}e^{2\pi t\xi} dt \right| \\
+			&= e^{-\pi R^2}e^{-\pi\xi^2} \left|\int_{0}^{\xi}e^{-2\pi itR}e^{-2\pi\xi t}e^{\pi t^2}e^{2\pi t\xi} dt \right| \\
+			&\leq e^{-\pi R^2}e^{-\pi\xi^2}K_2\xi, \ K_2\in\mathbb{R}_{+} \\
+			&= C_2e^{-\pi R^2}, \ C_2 = e^{-\pi\xi^2}K_2\xi. 
+			\end{align*}
+			
+			\item Por fim, lembrando do item 2, em que obtemos a igualdade
+			$$
+			0 = \int_{\gamma_R}g(z)dz = I_1(R) + I_2(R) - e^{-\pi\xi^2}\int_{-R}^{R}e^{-\pi t^2}dt + \mathcal{F}(f)(\xi),
+			$$
+			tomando o limite quando $R\to\infty$, temos que $|I_1(R)|,|I_2(R)|\to 0$, de modo que $I_1(R), I_2(R)\to 0$ e obtemos, finalmente,
+			\begin{align*}
+			0 &= \lim\limits_{R\to\infty} I_1(R) + \lim\limits_{R\to\infty} I_2(R) + \lim\limits_{R\to\infty} -e^{-\pi\xi^2}\int_{-R}^{R}e^{-\pi t^2}dt + \mathcal{F}(f)(\xi) \\
+			&= -e^{-\pi\xi^2} + \mathcal{F}(f)(\xi),
+			\end{align*}
+			de modo que 
+			$$
+			\mathcal{F}(f)(\xi) = e^{-\pi\xi^2} = f(\xi),
+			$$
+			como desejado.
+		\end{itemize}
+		
+		\item\begin{enumerate}
+			\item Temos
+			\begin{align*}
+			\int_{\gamma}f(z)dz = \int_{0}^{2\pi}ie^{it}e^{-it}e^{it}dt = i\int_{0}^{2\pi}e^{it}dt = 0.
+			\end{align*}
+			
+			\item Temos, fazendo $h(z) = z+1$ e usando a Fórmula Integral de Cauchy, que
+			\begin{align*}
+			\int_{\gamma}f(z)dz = \int_{\gamma}\frac{h(z)}{z}dz = 2\pi ih(0) = 2\pi i.
+			\end{align*}
+			
+			\item Temos, fazendo $h(z) = z+1$ e usando a Fórmula Integral de Cauchy, que
+			\begin{align*}
+			\int_{\gamma}f(z)dz = \int_{\gamma}\frac{h(z)}{z}dz = 2\pi i h(0) = 2\pi i.
+			\end{align*}
+			
+			\item Note que $\gamma$ não engloba a origem, que é o único ponto no qual $f(z)$ não é derivável. Agora, repare que $\mathbb{C}^*$ \textbf{não} é estrelado, mas $f(z) = \displaystyle{\frac{z+1}{z}}$ é holomorfa em $\mathbb{C}^*$. Deste último fato segue que $f$ é holomorfa em subconjuntos de $\mathbb{C}^*$. Podemos, então, escolher um disco fechado $\overline{D}$ que contenha $\gamma$ mas não contenha a origem, de modo que $f:D\to \mathbb{C}$ é holomorfa em $D$, que é estrelado, e $\gamma$ é suave e fechado. Daí, segue do Teorema de Cauchy-Goursat bis que 
+			$$
+			\int_{\gamma}f(z)dz = 0.
+			$$
+			
+			\item Note que $\gamma$ engloba a singularidade $(\sqrt{2},0)$. Sendo assim, escreva
+			$$
+			f(z) = \frac{1}{z+\sqrt{2}}\cdot\frac{1}{z-\sqrt{2}} = \frac{h(z)}{z-\sqrt{2}}.
+			$$
+			Usando a Fórmula Integral de Cauchy, temos
+			\begin{align*}
+			\int_{\gamma}f(z)dz = \int_{\gamma} \frac{h(z)}{z-\sqrt{2}} = 2\pi ih(\sqrt{2}) = \frac{\pi}{\sqrt{2}}i.
+			\end{align*}
+			
+			\item Utlizando frações parciais, podemos escrever
+			$$
+			\frac{1}{z^2 - 2} = -\frac{1}{2\sqrt{2}}\cdot\frac{1}{z+\sqrt{2}} + \frac{1}{2\sqrt{2}}\cdot\frac{1}{z-\sqrt{2}}.
+			$$		
+			Daí, pela Fórmula Integral de Cauchy, temos
+			\begin{align*}
+			\int_{\gamma}f(z)dz &= -\frac{1}{2\sqrt{2}}\int_{\gamma}\frac{1}{z+\sqrt{2}}dz +\frac{1}{2\sqrt{2}}\int_{\gamma}\frac{1}{z-\sqrt{2}}dz \\
+			&= -\frac{1}{2\sqrt{2}}2\pi i +\frac{1}{2\sqrt{2}}2\pi i \\
+			&= 0.
+			\end{align*}
+			
+			\item Temos $\gamma = \gamma_1*\gamma_3*\gamma_3*\gamma_4$ com
+			\begin{align*}
+			\gamma_1(t) &= t, \ 0\leq t\leq 1 \\ 
+			\gamma_2(t) &= 1+it, \ 0\leq t\leq 1 \\
+			\gamma_3(t) &= 1-t+i, \ 0\leq t\leq 1 \\
+			\gamma_4(t) &= (1-t)i, \ 0\leq t\leq 1.
+			\end{align*}
+			Assim, temos
+			\begin{align*}
+			\int_{\gamma}f(z)dz &= \sum_{i=1}^{4}\int_{\gamma_i}f(z)dz \\
+			&= \int_{0}^{1}\pi e^{\pi t}dt + \int_{0}^{1}i\pi e^{\pi (1-it)}dt - \int_{0}^{1}\pi e^{\pi (1-t-i)}dt - \int_{0}^{1}i\pi e^{\pi (t-1)i}dt \\
+			&= e^{\pi t}\Bigg|_{0}^{1} - e^{\pi (1-it)}\Bigg|_{0}^{1} + e^{\pi (1-t-i)}\Bigg|_{0}^{1} - e^{\pi (t-1)i}\Bigg|_{0}^{1} \\
+			&= 4(e^\pi - 1).
+			\end{align*}
+		\end{enumerate}
+	\end{enumerate}
+\end{document}

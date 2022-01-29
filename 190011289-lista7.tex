@@ -1,0 +1,288 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{makeidx,graphics}
+\usepackage[dvips]{graphicx}
+%\usepackage[latin1]{inputenc}
+%\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{ae}
+\usepackage{indentfirst}
+\usepackage{amsbsy}
+\usepackage{fancyhdr}
+\usepackage{pstricks}
+\usepackage[all]{xy}
+\usepackage{wrapfig}
+\usepackage[pdfstartview=FitH,backref,colorlinks,bookmarksnumbered,bookmarksopen,linktocpage,urlcolor=blue,
+linkcolor=cyan]{hyperref}
+\usepackage{bussproofs}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{amsbsy}
+\usepackage{url}
+\usepackage{float} 
+%\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+
+\usepackage{esint}
+\usepackage{multicol}
+
+\newtheorem{definition}{Definição}
+%\newtheorem{example}{Exemplo}
+\newtheorem{lema}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem{corolario}{Corolário}
+\newtheorem*{obs}{Observação}
+
+\setlength{\topmargin}{-1.0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{10.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\baselineskip}{12mm}
+
+\newcommand{\dx}{\ \mathrm{d} x }
+\newcommand{\dy}{\ \mathrm{d} y }
+\newcommand{\dz}{\ \mathrm{d} z }
+\newcommand{\du}{\ \mathrm{d} u }
+\newcommand{\dv}{\ \mathrm{d} v }
+\newcommand{\dr}{\ \mathrm{d} r }
+\newcommand{\dt}{\ \mathrm{d} t }
+\newcommand{\dteta}{\ \mathrm{d} \theta }
+\newcommand{\dro}{\ \mathrm{d} \rho }
+\newcommand{\dfi}{\ \mathrm{d} \phi }
+\newcommand{\ds}{\ \mathrm{d} s }
+\newcommand{\dS}{\ \mathrm{d} S }
+\newcommand{\dq}{\ \mathrm{d} q }
+\newcommand{\dif}{\mathrm{d}}
+
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\diverg}{div}
+
+\graphicspath{{img/}}
+
+\renewcommand{\sectionmark}[1]{ \markright{ \thesection.\ #1}}
+
+\title{\textbf{Variável Complexa 1}\\ Lista 7}
+\author{Caio Tomás de Paula}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\begin{enumerate}		
+		\item Temos $g(z)\equiv 1$ holomorfa em $\mathbb{C}$, que contém a região fechada e limitada $V$ determinada por $\gamma(t)$. Daí, pela Fórmula Integral de Cauchy, temos
+		\begin{align*}
+		\int_{\gamma} f(z) dz = \int_{\gamma}\frac{g(z)}{z-z_0}dz = 2\pi ig(z_0) = 2\pi i.
+		\end{align*}
+		
+		\item Temos $g(z)\equiv 1$ holomorfa em $\mathbb{C}$, que contém a região fechada e limitada $V$ determinada por $\gamma(t)$. Daí, pela Fórmula Integral de Cauchy, temos
+		\begin{align*}
+		\int_{\gamma} f(z) dz = \int_{\gamma}\frac{g(z)}{(z-z_0)^n}dz = \frac{2\pi i}{(n-1)!}g^{(n-1)}(z_0) = 0.
+		\end{align*}
+		
+		\item Temos $g(z)= e^{iz}$ holomorfa em $\mathbb{C}$, que contém a região fechada e limitada $V$ determinada por $\gamma(t)$. Daí, pela Fórmula Integral de Cauchy, temos
+		\begin{align*}
+		\int_{\gamma} f(z) dz = \int_{\gamma}\frac{g(z)}{z^2}dz = \frac{2\pi i}{1!}g'(0) = 2\pi i\cdot ie^{i\cdot 0} = -2\pi.
+		\end{align*}
+		
+		\item Temos $g(z) = \sin(z)$ holomorfa em $\mathbb{C}$, que contém a região fechada e limitada $V$ determinada por $\gamma(t)$. Daí, pela Fórmula Integral de Cauchy, temos
+		\begin{align*}
+		\int_{\gamma} f(z) dz = \int_{\gamma}\frac{g(z)}{z^4}dz = \frac{2\pi i}{3!}g^{(3)}(0) = \frac{\pi i}{3}\cdot (-\cos(0)) = -\frac{\pi i}{3}.
+		\end{align*}
+		
+		\item Note que $f(z)$ é holomorfa em $\mathbb{C}\setminus L_0$, i.e., no ramo principal do logaritmo. Esse conjunto contém a região fechada e limitada $V$ determinada por $\gamma$. Como $\partial V$ é suave e $V\setminus\partial V$ é domínio, segue do Teorema de Cauchy que 
+		$$
+		\int_{\gamma}f(z) dz = 0.
+		$$
+		
+		\item Note que $f(z) = \displaystyle{ \frac{2\sinh z}{z^n}}$ e que $g(z) = 2\sinh z$ é inteira. Como $\mathbb{C}$ contém a região fechada e limitada $V$ determinada por $\gamma$, segue da Fórmula Integral de Cauchy que
+		\begin{align*}
+		\int_{\gamma}f(z) dz = \frac{2\pi i}{(n-1)!}\cdot g^{(n-1)}(0) = \begin{cases}
+		\displaystyle{\frac{2\pi i}{(n-1)!}}, \ n \ \text{ímpar}; \\
+		0, \ n \ \text{par}.
+		\end{cases}
+		\end{align*}
+		
+		\item Note que podemos escrever
+		$$
+		f(z) = \frac{1}{z^2 + 1} = \frac{i}{2}\cdot\frac{1}{z+i} - \frac{i}{2}\cdot\frac{1}{z-i}.
+		$$
+		Daí, como $g(z)\equiv 1$ é inteira e $\mathbb{C}$ contém a região fechada e limitada $V$ determinada por $\gamma$, segue da Fórmula Integral de Cauchy que
+		\begin{align*}
+		\int_{\gamma}f(z) dz = \frac{i}{2}\int_{\gamma}\frac{1}{z+i} dz - \frac{i}{2}\int_{\gamma}\frac{1}{z-i} dz = \frac{i}{2}\cdot 2\pi i - \frac{i}{2}\cdot 2\pi i = 0.
+		\end{align*}
+		
+		\item Temos
+		\begin{align*}
+		\Bigg| \int_{\gamma}\frac{e^{iz}}{z}dz \Bigg| = \Bigg| i\int_{0}^{\pi}\exp(ire^{it})dt \Bigg| \leq \int_{0}^{\pi} |\exp(ire^{it})| dt = \int_{0}^{\pi}e^{-r\sin t}dt.
+		\end{align*}
+		Agora, como $\xi(t) = e^{-r\sin t}, 0\leq t\leq \pi, r>1$ atinge mínimo em $t=\pi/2$ e é simétrica em relação à reta vertical $t=\pi/2$, então dado $\eta>0$ suficientemente pequeno, o valor máximo de $\xi$ em $[\eta, \pi - \eta]$ ocorre em $t = \eta$ e $t = \pi - \eta$. Pelo Lema Técnico, temos
+		\begin{align*}
+		\int_{0}^{\pi}e^{-r\sin t}dt &= \int_{0}^{\eta}e^{-r\sin t}dt + \int_{\eta}^{\pi - \eta}e^{-r\sin t}dt + \int_{\pi - \eta}^{\pi}e^{-r\sin t}dt \\
+		&\leq \eta + \pi e^{-r\sin \eta} + \eta \\
+		&= 2\eta + \pi e^{-r\sin\eta},
+		\end{align*}  
+		de modo que
+		\begin{align*}
+		\Bigg| \int_{\gamma}\frac{e^{iz}}{z}dz \Bigg| \leq 2\eta + \pi e^{-r\sin\eta}.
+		\end{align*}
+		Agora, como $e^{-r\sin \eta} \xrightarrow{r\to\infty} 0$, segue que dado $\varepsilon > 0$ existe $r_0$ tal que se $r>r_0$, então $e^{-r\sin\eta} < \varepsilon$. Tomando $\eta < \varepsilon$, obtemos
+		\begin{align*}
+		\Bigg| \int_{\gamma}\frac{e^{iz}}{z}dz \Bigg| \leq 2\eta + \pi e^{-r\sin\eta} \leq (2+\pi)\varepsilon \xrightarrow{r\to\infty} 0.
+		\end{align*}
+		
+		\item Da Fórmula Integral de Cauchy, temos
+		$$
+		\int_{\gamma}\frac{e^{kz}}{z}dz = 2\pi i.
+		$$
+		Como a integral de linha real é independente da parametrização e a integral de linha complexa é formada por duas integrais de linha reais, segue que a integral de linha complexa independe da parametrização. Portanto, podemos tomar $\gamma(t) = e^{it}$, com $-\pi\leq t\leq\pi$. Daí, temos
+		\begin{align*}
+		2\pi i = \int_{\gamma}\frac{e^{kz}}{z}dz &= \int_{-\pi}^{\pi} \frac{e^{k\cos t}\cdot e^{ik\sin t}}{\cos t + i\sin t}\cdot (-\sin t +\cos t)dt \\
+		&= \int_{-\pi}^{\pi} e^{k\cos t}(\cos(k\sin t) + i\sin(k\sin t))dt \\
+		&= \int_{-\pi}^{\pi} e^{k\cos t}\cos(k\sin t) dt + i \int_{-\pi}^{\pi}e^{k\cos t}\sin(k\sin t)dt, 
+		\end{align*}
+		donde
+		\begin{align*}
+		2\pi = \int_{-\pi}^{\pi} e^{k\cos t}\cos(k\sin t) dt.
+		\end{align*}
+		Denotando a integral desejada por $A$, temos
+		\begin{align*}
+		\int_{-\pi}^{\pi} e^{k\cos t}\cos(k\sin t) dt = A + \int_{-\pi}^{0} e^{k\cos t}\cos(k\sin t) dt &= A + \int_{0}^{\pi} e^{k\cos (-u)}\cos(k\sin (-u)) du \\
+		&= A + \int_{0}^{\pi} e^{k\cos t}\cos(k\sin t) dt \\
+		&= 2A,
+		\end{align*}
+		donde segue, finalmente, que
+		$$
+		A = \pi.
+		$$
+		
+		\item Como $f$ é inteira, temos
+		\begin{align*}
+		f(z) = \sum_{k=0}^{\infty} a_kz^k, \ \forall z\in\mathbb{C}.
+		\end{align*}
+		Daí, para $|z|\geq R > 0$, temos
+		\begin{align*}
+		\frac{f(z)}{z^n} = \sum_{k=0}^{\infty} a_kz^{k-n} = \sum_{k=0}^{n-1}\frac{a_k}{z^{n-k}} + \sum_{k=0}^{\infty}a_{n+k}z^k \Longrightarrow \frac{|f(z)|}{|z|^n} = |g(h) + h(z)|,
+		\end{align*}
+		sendo
+		\begin{align*}
+		g(z) &= \sum_{k=0}^{n-1}\frac{a_k}{z^{n-k}}, \\
+		h(z) &= \sum_{k=0}^{\infty}a_{n+k}z^k.
+		\end{align*}
+		Temos também
+		\begin{align*}
+		|g(h) + h(z)| \leq M, \ \forall z\in\mathbb{C},
+		\end{align*}
+		donde segue que $h$ é limitada pois $g(z)\xrightarrow{|z|\to\infty}0$. Daí, como $h$ é inteira, segue do Teorema de Liouville que $h$ é constante, digamos $h(z)\equiv a$. Consequentemente, temos
+		\begin{align*}
+		f(z) = z^ng(z) + z^nh(z) = az^n + \sum_{k=0}^{n-1}z^k = \sum_{k=0}^{n}a_kz_k, \text{ com } a_n = a,
+		\end{align*}
+		ou seja, $f$ é um polinômio de grau $\leq n$.
+		
+		\item Se $f(a) = 0$, terminamos. Suponha então $f(a)\neq 0$, de modo que $|f(z)|\geq |f(a)| > 0, \ \forall z\in U$ e $f$ não tem raízes em $U$. Desse modo, temos que $g\equiv 1/f$ está bem definida em $U$, é holomorfa em $U$ e $|g(a)|\geq |g(z)|, \ \forall z\in U$. Segue do Princípio do Módulo Máximo que $g$ é constante, de modo que $f$ também o é.
+		
+		\item Temos $f$ holomorfa em $D(0;\varepsilon), \text{ com } 0 < \varepsilon < 1$, cuja fronteira é parametrizada por $\gamma(t) = \varepsilon e^{it}, \ 0\leq t\leq 2\pi$. Pelo Corolário da Fórmula Integral de Cauchy, pelo Lema Técnico e pela hipótese $\displaystyle{ |f(z)|\leq\frac{1}{1 - |z|}}, |z|<1$, temos
+		\begin{align*}
+		\frac{f^{(n)}(0)}{n!} = \frac{1}{2\pi i}\int_{\gamma}\frac{f(z)}{z^{n+1}}dz = \frac{1}{2\pi i}\int_{0}^{2\pi}\frac{f(\varepsilon e^{it})}{\varepsilon^{n+1}e^{(n+1)it}}i\varepsilon e^{it}dt = \frac{1}{2\pi\varepsilon^n}\int_{0}^{2\pi}\frac{f(\varepsilon e^{it})}{e^{nit}}dt,
+		\end{align*}
+		donde segue que
+		\begin{align*}
+		\left| \frac{f^{(n)}(0)}{n!} \right| \leq \frac{1}{2\pi\varepsilon^n}\int_{0}^{2\pi}|f(\varepsilon e^{it})|dt \leq \frac{1}{2\pi\varepsilon^n}\int_{0}^{2\pi}\frac{1}{1 - |\varepsilon e^{it}|}dt \leq \frac{1}{\varepsilon^n}\cdot\frac{1}{1-\varepsilon} = h(\varepsilon).
+		\end{align*}
+		Agora, $h$ é derivável e positiva em $(0,1)$, com $h\xrightarrow{\varepsilon \to 1^{-}, 0^{+}} +\infty$. Sendo assim, $h$ admite um mínimo em $(0,1)$, digamos $\varepsilon_m$. Vamos encontrar o valor de $\varepsilon_m$:
+		\begin{align*}
+		h'(\varepsilon) = -\frac{1}{\varepsilon^{n+1}}\cdot\frac{1}{1 - \varepsilon} + \frac{1}{\varepsilon^n}\cdot\frac{1}{(1-\varepsilon)^2} \Longrightarrow h'(\varepsilon) = 0 \iff 0 = -n(1-\varepsilon) + \varepsilon \Longrightarrow \varepsilon_m = \frac{n}{n+1}.
+		\end{align*}
+		Daí, como
+		\begin{align*}
+		\left| \frac{f^{(n)}(0)}{n!} \right| \leq h(\varepsilon) \leq h(\varepsilon_m) = \left(\frac{n+1}{n}\right)^n\cdot(n+1) = (n+1)\left( 1 + \frac{1}{n} \right)^n.
+		\end{align*}
+		Por fim, como a sequência $(x_n)$ com
+		$$
+		x_n = \left( 1+\frac{1}{n} \right)^n
+		$$
+		é crescente e converge para $e$, segue que
+		\begin{align*}
+		\left| \frac{f^{(n)}(0)}{n!} \right| \leq (n+1)\left( 1 + \frac{1}{n} \right)^n < (n+1)e.
+		\end{align*}
+		
+		\item Para demonstrar o Princípio do Módulo Máximo, sejam $U$ domínio, $f$ holomorfa em $U$ com $|f(a)|\geq|f(z)| \ \forall z\in U$ para algum $a\in U$. Além disso, seja $\gamma(t) = a + re^{it}$ com $r$ suficientemente pequeno para que $\gamma \subset U$ e $D(a,r)\subset U$. Usando a desigualdade dada, temos
+		\begin{align*}
+		|f(a)| \leq K\left( \frac{2\pi r}{2\pi r} \right)^{1/n} = K.
+		\end{align*}
+		Por definição, $K = |f(b)|$ para algum $b\in\gamma$, de modo que $K\leq |f(a)|$ (por hipótese). Sendo assim, $|f(a)| = K$ e, pela Fórmula Integral de Cauchy,
+		\begin{align*}
+		f(a) = \frac{1}{2\pi i}\int_{\gamma}\frac{f(z)}{z-a} \ dz = \frac{1}{2\pi i}\int_{0}^{2\pi}\frac{f(a+re^{it})}{re^{it}}ire^{it} \ dt = \frac{1}{2\pi}\int_{0}^{2\pi}f(a+re^{it}) \ dt.
+		\end{align*}
+		Pelo Lema Técnico, segue
+		\begin{align*}
+		|f(a)|\leq \frac{1}{2\pi}\int_{0}^{2\pi}|f(a+re^{it})| \ dt \leq \frac{1}{2\pi}\int_{0}^{2\pi}K \ dt = |f(a)|,
+		\end{align*}
+		ou seja, $|f(a)| = |f(a+re^{it})|, \ \forall t\in [0,2\pi]$. Segue então que $f(D(a,r))$ está contida no círculo $|b| = |f(a)|$, de modo que $f$ é constante em $D(a,r)$. Por fim, fazendo $r$ variar (já que $r$ é arbitrário), segue que $f$ é constante em $U$.
+		
+		\item Sendo $a_n = x_n + iy_n, (x_n,y_n)\in\mathbb{R}^2$, temos
+		\begin{align*}
+		f(z_0 + re^{i\theta}) = \sum_{n=0}^{\infty}(x_n+iy_n)r^ne^{in\theta} = \sum_{n=0}^{\infty}r^n(x_n\cos n\theta - y_n\sin n\theta) +i\sum_{n=0}^{\infty}r^n(x_n\sin n\theta + y_n\cos n\theta),
+		\end{align*}
+		donde
+		\begin{align*}
+		|f(z_0 + re^{i\theta})|^2 = \sum_{n=0}^{\infty}\sum_{k=0}^{n}\Gamma_k\Gamma_{n-k} + \sum_{n=0}^{\infty}\sum_{k=0}^{n}\Lambda_k\Lambda_{n-k},
+		\end{align*}
+		com $\Gamma_n = r^n(x_n\cos n\theta - y_n\sin n\theta)$ e $\Lambda_n = r^n(x_n\sin n\theta + y_n\cos n\theta)$. Como as séries acima convergem absolutamente no domínio especificado no enunciado, podemos definir
+		\begin{align*}
+		I = \frac{1}{2\pi}\int_{0}^{2\pi}|f(z_0 + re^{i\theta})|^2 \ d\theta = \frac{1}{2\pi}\sum_{n=0}^{\infty}\sum_{k=0}^{n}\int_{0}^{2\pi}\Gamma_k\Gamma_{n-k} \ d\theta + \frac{1}{2\pi}\sum_{n=0}^{\infty}\sum_{k=0}^{n}\int_{0}^{2\pi}\Lambda_k\Lambda_{n-k} \ d\theta.
+		\end{align*}
+		Devido à forma das integrais de $\Gamma_k\Gamma_{n-k}$ e $\Lambda_k\Lambda_{n-k}$, precisamos apenas calcular as em que $k=n-k$, pois do contrário as integrais são nulas. Sendo assim, devemos ter $n$ par, digamos $n=2j, j\in\mathbb{N}$, e obtemos
+		\begin{align*}
+		I &= \frac{1}{2\pi}\sum_{j=0}^{\infty}\left( \int_{0}^{2\pi}A_j^2 + B_j^2 \ d\theta \right) \\
+		&= \frac{1}{2\pi}\sum_{j=0}^{\infty}r^{2j}\left( \int_{0}^{2\pi} x_j^2 + y_j^2 - x_jy_j\sin(2n\theta) + x_jy_j\sin(2n\theta) \ d\theta \right) \\
+		&= \sum_{j=0}^{\infty}|a_j|^2r^{2j}
+		\end{align*}
+		e temos a igualdade desejada. Agora, seja $\gamma(t)$ a fronteira do disco $D(a, r)$, cujo fecho está contido em $U$. Da Fórmula Integral de Cauchy, temos
+		\begin{align*}
+		f^2(a) = \int_{\gamma}\frac{f^2(w)}{w-a} \ dw = \frac{1}{2\pi}\int_{0}^{2\pi}f^2(a+re^{it})dt.
+		\end{align*}
+		Da holomorficidade de $f$, temos
+		\begin{align*}
+		f(z) = \sum_{n=0}^{\infty}a_n(z-a)^n
+		\end{align*}
+		de modo que, usando o Lema Técnico, a igualdade de Parseval e o fato de que $|f(a)|\geq |f(z)|$, temos
+		\begin{align*}
+		|f^2(a)| = |a_0|^2 \leq \frac{1}{2\pi}\int_{0}^{2\pi}|f(a+re^{it})|^2 \ dt = \sum_{n=0}^{\infty}|a_n|^2r^{2n} \leq \frac{1}{2\pi}\int_{0}^{2\pi}|f(a)|^2 \ dt = |f(a)|^2 = |a_0|^2.
+		\end{align*}
+		Daí, segue que $|a_n| = 0 \ \forall n>0$ já que $r>0$, e $f$ é constante.
+		
+		\item Temos
+		\begin{align*}
+		\lim\limits_{z\to z_0}\frac{f(z)}{g(z)} = \lim\limits_{z\to z_0} \frac{f(z) - f(z_0)}{z - z_0}\left( \frac{g(z) - g(z_0)}{z - z_0} \right)^{-1} = \lim\limits_{z\to z_0} \frac{f(z) - f(z_0)}{z - z_0}\left(\lim\limits_{z\to z_0} \frac{g(z) - g(z_0)}{z - z_0} \right)^{-1}.
+		\end{align*}
+		Os limites no produto existem por hipótese e, se $g'(z_0)\neq 0$, então temos
+		\begin{align*}
+		\lim\limits_{z\to z_0}\frac{f(z)}{g(z)} = \frac{f'(z_0)}{g'(z_0)}.
+		\end{align*}
+		Agora, se $g'(z_0) = 0 = f'(z_0)$, dividimos numerador e denominador por $-(z-z_0)$
+		\begin{align*}
+		\lim\limits_{z\to z_0} \frac{f(z) - f(z_0)}{z - z_0}\left(\lim\limits_{z\to z_0} \frac{g(z) - g(z_0)}{z - z_0} \right)^{-1} &= \\
+		\lim\limits_{z\to z_0} \frac{1}{z-z_0}\left(f'(z_0) - \frac{f(z) - f(z_0)}{z - z_0}\right)\lim\limits_{z\to z_0}\frac{1}{z-z_0}\left(g'(z_0) - \frac{g(z) - g(z_0)}{z - z_0} \right)^{-1} = \frac{f^{(2)}(z_0)}{g^{(2)}(z_0)}.
+		\end{align*}
+		Além disso, temos
+		\begin{align*}
+		\lim\limits_{z\to z_0}\frac{f'(z)}{g'(z)} = \lim\limits_{z\to z_0} \frac{f'(z) - f'(z_0)}{z - z_0}\left(\lim\limits_{z\to z_0} \frac{g'(z) - g'(z_0)}{z - z_0} \right)^{-1} = \frac{f^{(2)}(z_0)}{g^{(2)}(z_0)},
+		\end{align*}
+		e segue que
+		\begin{align*}
+		\lim\limits_{z\to z_0}\frac{f(z)}{g(z)} = \lim\limits_{z\to z_0}\frac{f'(z)}{g'(z)} = \frac{f^{(2)}(z_0)}{g^{(2)}(z_0)}.
+		\end{align*}
+		Se $f^{(2)}(z_0) = 0 = g^{(2)}(z_0)$, podemos proceder de modo análogo para obter a igualdade correspondente, com a derivada terceira no ponto.
+		
+		\item Defina $h(z) = f(z) - g(z), \ \forall z\in\mathbb{C}$. Como $f$ e $g$ são holomorfas, segue que em particular elas são contínuas. Daí, $f(z_n), g(z_n) \xrightarrow{n\to\infty} a$. Também temos $h$ contínua (por ser a diferença de funções contínuas) e $\displaystyle{\lim\limits_{n\to\infty} h(z_n) = h(a) = 0}$. Note que podemos supor $(z_n)$ não constante, pois se $(z_n) = (a,a,\dots)$, podemos construir $(z'_n) = (b,a,a,\dots), b\neq a$, que não é constante e tem as mesmas propriedades de $(z_n)$. Portanto, pelo Princípio da Identidade, temos $h\equiv 0$, i.e., $f\equiv g, \ \forall z\in U$.
+		
+	\end{enumerate}
+
+\end{document}

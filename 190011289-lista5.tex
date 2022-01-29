@@ -1,0 +1,449 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{makeidx,graphics}
+\usepackage[dvips]{graphicx}
+%\usepackage[latin1]{inputenc}
+%\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{ae}
+\usepackage{indentfirst}
+\usepackage{amsbsy}
+\usepackage{fancyhdr}
+\usepackage{pstricks}
+\usepackage[all]{xy}
+\usepackage{wrapfig}
+\usepackage[pdfstartview=FitH,backref,colorlinks,bookmarksnumbered,bookmarksopen,linktocpage,urlcolor=blue,
+linkcolor=cyan]{hyperref}
+\usepackage{bussproofs}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{amsbsy}
+\usepackage{url}
+%\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+
+\usepackage{esint}
+
+\newtheorem{definition}{Definição}
+%\newtheorem{example}{Exemplo}
+\newtheorem{lema}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem{corolario}{Corolário}
+\newtheorem*{obs}{Observação}
+
+\setlength{\topmargin}{-1.0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{10.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\baselineskip}{12mm}
+
+\newcommand{\dx}{\ \mathrm{d} x }
+\newcommand{\dy}{\ \mathrm{d} y }
+\newcommand{\dz}{\ \mathrm{d} z }
+\newcommand{\du}{\ \mathrm{d} u }
+\newcommand{\dv}{\ \mathrm{d} v }
+\newcommand{\dr}{\ \mathrm{d} r }
+\newcommand{\dt}{\ \mathrm{d} t }
+\newcommand{\dteta}{\ \mathrm{d} \theta }
+\newcommand{\dro}{\ \mathrm{d} \rho }
+\newcommand{\dfi}{\ \mathrm{d} \phi }
+\newcommand{\ds}{\ \mathrm{d} s }
+\newcommand{\dS}{\ \mathrm{d} S }
+\newcommand{\dq}{\ \mathrm{d} q }
+\newcommand{\dif}{\mathrm{d}}
+
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\diverg}{div}
+
+\graphicspath{{img/}}
+
+\renewcommand{\sectionmark}[1]{ \markright{ \thesection.\ #1}}
+
+\title{\textbf{Variável Complexa 1}\\ Lista 5}
+\author{Caio Tomás de Paula}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\begin{enumerate}
+		\item Tomando 
+		$$
+		U = \left\{ z\in\mathbb{C} : \Im(z)<0 \right\},
+		$$
+		temos que $f$ está bem definida, pois as funções $\log$ e raiz quadrada (ramo principal) estarão bem definidas. 
+		
+		Agora, note que
+		\begin{align*}
+		\cos(f(z)) &= \frac{1}{2}\left( \exp\left( \log\left( z+\sqrt{z^2-1} \right) \right) + \exp\left( -\log\left( z+\sqrt{z^2-1} \right) \right) \right) \\
+		&= \frac{1}{2}\left( z+\sqrt{z^2-1} + \frac{1}{z+\sqrt{z^2-1}} \right) \\
+		&= \frac{1}{2}\left( z+\sqrt{z^2-1} + z-\sqrt{z^2-1} \right) \\
+		&= z.
+		\end{align*}
+		O mesmo $U$ de $f$ vale para $g$, pelas mesmas considerações.
+		
+		Por fim, perceba que
+		\begin{align*}
+		\cos(g(z)) &= \frac{1}{2}\left( \exp\left( \log\left( z-\sqrt{z^2-1} \right) \right) + \exp\left( -\log\left( z-\sqrt{z^2-1} \right) \right) \right) \\
+		&= \frac{1}{2}\left( z-\sqrt{z^2-1} + \frac{1}{z-\sqrt{z^2-1}} \right) \\
+		&= \frac{1}{2}\left( z-\sqrt{z^2-1} + z+\sqrt{z^2-1} \right) \\
+		&= z.
+		\end{align*}
+		
+		\item Primeiro, note que 
+		$$
+		\sin(f(z)) = z \Longleftrightarrow \cos^2(f(z)) = 1 - z^2.
+		$$
+		Agora, da Regra da Cadeia segue que
+		$$
+		1 = \cos(f(z))\cdot f'(z) \Longleftrightarrow 1 = \cos^2(f(z))\cdot(f'(z))^2 \Longleftrightarrow (f'(z))^2 = \frac{1}{1-z^2}.
+		$$
+		Por fim, suponha que $\displaystyle{\frac{\pi}{2}\in f(U)}$. Então existe $z_1\in U$ tal que $f(z_1) = \pi/2$, de modo que
+		$$
+		\sin(f(z_1)) = 1 \Longrightarrow z_1 = 1.
+		$$
+		Ora, mas então como
+		$$
+		(f'(z))^2 = \frac{1}{1-z^2},
+		$$
+		teríamos que $z=1$ seria uma singularidade de $f$, contradizendo o fato de $f$ ser holomorfa em $U$. Portanto, $\pi/2\notin U$. 
+		
+		\item Temos
+		\begin{align*}
+		az^2+bz+c=0 \Leftrightarrow \left( z+\frac{b}{2a} \right)^2 = \frac{b^2-4ac}{4a^2}
+		\end{align*}
+		e, fazendo
+		$$
+		z_{\star} = z+\frac{b}{2a}, \ \ \ w = \frac{b^2-4ac}{4a^2},
+		$$
+		segue que os únicos valores possíveis de $z_{\star}$ são
+		\begin{align*}
+		z_{\star} &= |w|^{1/2}\cdot e^{i\arg(w)/2} \\
+		z_{\star} &= |w|^{1/2}\cdot e^{i(\pi-\arg(w)/2)},
+		\end{align*}
+		de modo que os únicos valores possíveis de $z$ são
+		\begin{align*}
+		z &= -\frac{b}{2a} + |w|^{1/2}\cdot e^{i\arg(w)/2} \\
+		z &= -\frac{b}{2a} + |w|^{1/2}\cdot e^{i(\pi-\arg(w)/2)},
+		\end{align*}
+		
+		\item Note que
+		$$
+		z = 3^{\frac{1}{5}} \Longleftrightarrow z^5 = 3.
+		$$
+		Agora, perceba que podemos escrever
+		\begin{align*}
+		z^5 &= 3 = 3\cdot e^{i0} \Longrightarrow z = \sqrt[5]{3}\cdot e^{i0} = \sqrt[5]{3} \\
+		z^5 &= 3 = 3\cdot e^{i2\pi} \Longrightarrow z = \sqrt[5]{3}\cdot e^{i2\pi/5} \\
+		z^5 &= 3 = 3\cdot e^{i4\pi} \Longrightarrow z = \sqrt[5]{3}\cdot e^{i4\pi/5} \\
+		z^5 &= 3 = 3\cdot e^{i6\pi} \Longrightarrow z = \sqrt[5]{3}\cdot e^{i6\pi/5} \\
+		z^5 &= 3 = 3\cdot e^{i8\pi} \Longrightarrow z = \sqrt[5]{3}\cdot e^{i8\pi/5}
+		\end{align*}
+		qualquer que seja o ramo $\phi\neq \pi$ do logaritmo. Por fim, note que para se fizéssemos
+		\begin{align*}
+		z^5 &= 3 = 3\cdot e^{i10\pi} \Longrightarrow z = \sqrt[5]{3}\cdot e^{i10\pi/5} = \sqrt[5]{3}
+		\end{align*} 
+		e assim por diante, continuando a considerar os múltiplos de $2\pi$ acima de $8\pi$, passaremos a repetir as $5$ raízes acima. Portanto, concluímos que $3^{\frac{1}{5}}$ só pode assumir $5$ valores distintos.
+		
+		\item Usando o mesmo argumento acima, note que
+		$$
+		z = 3^{\sqrt{2}} \Longleftrightarrow z^{\sqrt{2}} = 9.
+		$$
+		Além disso, podemos escrever
+		\begin{align*}
+		z^{\sqrt{2}} = 9\cdot e^{i0} &\Longrightarrow z = 3^{\sqrt{2}}\cdot e^{i0} \\
+		z^{\sqrt{2}} = 9\cdot e^{i2\pi} &\Longrightarrow z = 3^{\sqrt{2}}\cdot e^{i2\pi/\sqrt{2}} \\
+		z^{\sqrt{2}} = 9\cdot e^{i4\pi} &\Longrightarrow z = 3^{\sqrt{2}}\cdot e^{i4\pi/\sqrt{2}} \\ 
+		\end{align*}
+		e assim por diante, para qualquer múltiplo inteiro de $2\pi$ e qualquer que seja o ramo $\phi\neq \pi$ do logaritmo. Contudo, note que nunca haverá uma repetição, já que $\nexists j\in\mathbb{Z}$ tal que
+		$$
+		\frac{2k\pi}{\sqrt{2}} = 2j\pi.
+		$$
+		Assim, há infinitos valores possíveis para $3^{\sqrt{2}}$.
+		
+		\item[12.] A primeira desigualdade claramente não vale para todo $z\in\mathbb{C}$, pois tomando $z=2$, temos
+		$$
+		|e^2| > 4 > 2,
+		$$
+		de modo que não vale 
+		$$
+		|e^z|\leq |z|, \ \forall z\in\mathbb{C}.
+		$$
+		Por outro lado, tomando $z=ni, n\in\mathbb{N}$, temos 
+		$$
+		|z| = n \geq 1 = |e^z|,
+		$$
+		de modo que também não vale 
+		$$
+		|e^z|\geq |z|, \ \forall z\in\mathbb{C}.
+		$$
+		Agora, tomando $z=a+ib, a,b\in\mathbb{R}$, temos que
+		$$
+		e^{|z|} = e^{\sqrt{a^2+b^2}}
+		$$
+		e
+		$$
+		|z| = \sqrt{a^2+b^2}\in\mathbb{R}.
+		$$
+		Ora, mas $e^x>x, \ \forall x\in\mathbb{R}$. Portanto, segue que
+		$$
+		e^{|z|} \leq |z|
+		$$
+		é falsa. Por fim, tomando novamente $z=a+ib, a,b\in\mathbb{R}$. Temos
+		$$
+		|e^z| = |e^a\cdot e^{ib}| = e^a
+		$$
+		e
+		$$
+		e^{|z|} = e^{\sqrt{a^2+b^2}}\geq e^{\sqrt{a^2}} = e^{|a|}\geq e^a\text{, já que } |a|\geq a, \ \forall a\in\mathbb{R}.
+		$$
+		Portanto, vale a última desigualdade:
+		$$
+		e^{|z|}\geq |e^z|, \ \forall  z\in\mathbb{C}
+		$$
+		
+		\item [14.] Note que
+		$$
+		0 < \frac{n!}{n^n} = \underbrace{\frac{n}{n}}_{=1}\underbrace{\cdot\frac{n-1}{n}\cdots\frac{2}{n}}_{<1}\cdot\frac{1}{n} < \frac{1}{n}.
+		$$
+		Como $\displaystyle{\lim\limits_{n\to\infty} 0 = 0 = \lim\limits_{n\to\infty}\frac{1}{n}}$, segue do Teorema do Sanduíche que $\displaystyle{\lim\limits_{n\to\infty} \frac{n!}{n^n} = 0}$. 
+		
+		\item[18.]
+		\begin{enumerate}
+			\item[(c)] Temos
+			$$
+			\frac{\log(ni)}{ni} = \frac{\ln|ni| + i\arg(ni)}{ni} = -i\frac{\ln(n)}{n} + \frac{\pi}{2n}.
+			$$
+			Como
+			\begin{align*}
+			\lim\limits_{n\to\infty} \frac{\pi}{2n} = 0 
+			\end{align*}
+			e
+			\begin{align*}
+			\lim\limits_{n\to\infty} \frac{\ln(n)}{n} \stackrel{\text{L'H}}{=} \lim\limits_{n\to\infty} \frac{1}{n} = 0
+			\end{align*}
+			segue que
+			\begin{align*}
+			\lim\limits_{n\to\infty} \frac{\log(ni)}{ni} = 0. 
+			\end{align*}
+			
+			\item[(e)] Note que
+			$$
+			\lim\limits_{n\to\infty}\sqrt[ni]{ni} = \lim\limits_{n\to\infty} \sqrt[ni]{\exp\left( \log(ni) \right)} = \lim\limits_{n\to\infty}\exp\left( \frac{\log(ni)}{ni} \right) = \exp\left( \lim\limits_{n\to\infty}\frac{\log(ni)}{ni} \right) = e^0 = 1.
+			$$
+		\end{enumerate}
+		
+		\item[23.] Para a primeira série, note que
+		$$
+		\sum_{n=1}^{\infty}\frac{1}{ni} = -i\sum_{n=1}^{\infty}\frac{1}{n},
+		$$
+		ou seja, a série desejada é um múltiplo escalar da série harmônica. Portanto, como a série harmônica diverge, a série procurada diverge.
+		
+		Agora, observe que
+		$$
+		\sum_{n=1}^{\infty}\frac{1}{n+i} = \sum_{n=1}^{\infty}\left(\frac{n}{n^2+1} - i\frac{1}{n^2+1}\right) 
+		$$
+		converge se, e só se, as séries
+		$$
+		\sum_{n=1}^{\infty}\frac{n}{n^2+1} \ \text{ e } \ \sum_{n=1}^{\infty}-\frac{1}{n^2+1}
+		$$
+		convergem. Ora, mas aplicando o teste da integral à primeira série, temos que ela converge se, e só se
+		$$
+		\int_{1}^{\infty}\frac{x}{1+x^2}dx < \infty .
+		$$
+		Calculando a integral, temos
+		$$
+		\int_{1}^{\infty}\frac{x}{1+x^2}dx = \frac{1}{2}\cdot\int_{1}^{\infty}\frac{1}{1+u}du = \frac{1}{2}\cdot\ln(1+u)\Big|_{1}^{\infty} = +\infty,
+		$$
+		de modo que a série 
+		$$
+		\sum_{n=1}^{\infty}\frac{n}{n^2+1}
+		$$
+		diverge e, por consequência, a série
+		$$
+		\sum_{n=1}^{\infty}\frac{1}{n+i}
+		$$
+		também diverge.
+		
+		\item[24.]
+		\begin{enumerate}
+			\item Temos
+			$$
+			\left| \frac{a_n}{a_{n+1}} \right| = \left| \frac{n}{n+1}\cdot 3i \right| = \frac{3n}{n+1} \xrightarrow{n\to\infty} 3
+			$$
+			de modo que o raio de convergência de 
+			$$
+			\sum_{n=0}^{\infty}\frac{n}{(3i)^n}(z-1)^n = \sum_{n=1}^{\infty}\frac{n}{(3i)^n}(z-1)^n
+			$$
+			é $3$, e a série converge para todo $z\in D(1,3)$.
+			
+			\item Temos
+			$$
+			\left| \frac{a_n}{a_{n+1}} \right| = \left| \frac{11^{n+2i}}{n!}\cdot \frac{(n+1)!}{11^{n+1+2i}} \right| = \left| \frac{n+1}{11} \right| = \frac{n+1}{11} \xrightarrow{n\to\infty} \infty 
+			$$
+			de modo que o raio de convergência de 
+			$$
+			\sum_{n=0}^{\infty}\frac{11^{n+2i}}{n!}z^n 
+			$$
+			é $\infty$, e a série converge para todo $z\in \mathbb{C}$.
+			
+			\item Note que 
+			\begin{align*}
+			\left| \frac{n^{2i}}{2^n} \right|^{1/n} &= \frac{\left| n^{2i} \right|^{1/n}}{2} \\ 
+			&= \frac{\left| \exp\left( 2i\ln(n) \right) \right|^{1/n}}{2} \\
+			&= \frac{\left| ne^{2i} \right|^{1/n}}{2} \\
+			&= \frac{\sqrt[n]{n}}{2} \\
+			&= \frac{1}{2}\exp\left(\frac{\ln(n)}{n}\right) \xrightarrow{n\to\infty}\frac{1}{2}e^0 = \frac{1}{2}
+			\end{align*} 
+			de modo que o raio de convergência $R$ é
+			$$
+			R = \frac{1}{\lim\limits_{n\to\infty}\sqrt[n]{|a_n|}} = \frac{1}{\frac{1}{2}} = 2,
+			$$
+			e a série converge para todo $z\in D(\pi,2)$.
+			
+			\item Temos que o raio de convergência $R$ é
+			\begin{align*}
+			R = \lim\limits_{n\to\infty} \left| \frac{5}{(4+3i)^n}\cdot\frac{(4+3i)^{n+1}}{5} \right| = \lim\limits_{n\to\infty} |4+3i| = 5,
+			\end{align*}
+			e a série converge para todo $z\in D(0,5)$.
+			
+			\item Temos que o raio de convergência $R$ é
+			\begin{align*}
+			R = \lim\limits_{n\to\infty} \left| \frac{7n}{(5+i)^n}\cdot\frac{(5+i)^{n+1}}{7(n+1)} \right| = \lim\limits_{n\to\infty} |5+i|\cdot\frac{7n}{7n+1} = \sqrt{26},
+			\end{align*}
+			e a série converge para todo $z\in D(-2,\sqrt{26})$.
+			
+			\item Temos que o raio de convergência $R$ é
+			\begin{align*}
+			R &= \lim\limits_{n\to\infty} \left| \frac{\log((n+1)i)}{\log(ni)} \right| \\
+			&= \lim\limits_{n\to\infty}\sqrt{\frac{\ln^2(n+1) + \pi^2/4}{\ln^2(n) + \pi^2/4}} \\
+			&= \sqrt{\lim\limits_{n\to\infty} \frac{2\ln(n+1)\frac{1}{n+1}}{2\ln(n)\frac{1}{n}} } \\
+			&= \lim\limits_{n\to\infty} \sqrt{\frac{n}{n+1}}\cdot\sqrt{\lim\limits_{n\to\infty}\frac{\ln(n+1)}{\ln(n)}} \\
+			&= \sqrt{\lim\limits_{n\to\infty}\frac{n}{n+1}} = 1,
+			\end{align*}
+			e a série converge para todo $z\in D(0,1)$.
+			
+			\item Temos que o raio $R$ de convergência é
+			$$
+			R = \lim\limits_{n\to\infty}\left| \frac{i^n}{2^{ni}}\cdot\frac{2^{(n+1)i}}{i^{n+1}} \right| = \lim\limits_{n\to\infty}\left| \frac{2^i}{i} \right| = |2^i| = |\exp(i\ln2)| = 1,
+			$$
+			e a série converge para todo $z\in D(0,1)$.
+			
+			\item Temos que o raio $R$ de convergência é
+			$$
+			R = \lim\limits_{n\to\infty} \left| \frac{(-1)^{n+1}}{n\sqrt{3i}}\cdot\frac{(n+1)\sqrt{3i}}{(-1)^{n+2}} \right| = \lim\limits_{n\to\infty}\frac{n+1}{n} = 1,
+			$$
+			e a série converge para todo $z\in D(0,1)$.
+			
+			\item Temos que o raio $R$ de convergência é
+			$$
+			R = \lim\limits_{n\to\infty}\left| \frac{3^{ni}}{i(2n)!}\cdot\frac{i(2n+2)!}{3\cdot 3^{ni}} \right| = \lim\limits_{n\to\infty} \frac{(2n+2)(2n+1)}{|3^i|} = +\infty, 
+			$$
+			ou seja, a série converge para todo $z\in\mathbb{C}$.
+			
+			\item Temos que o raio $R$ de convergência é 
+			$$
+			R = \lim\limits_{n\to\infty}\left| \frac{(n!)^2}{(2n)!}\cdot\frac{(2n+2)!}{[(n+1)!]^2} \right| = \lim\limits_{n\to\infty}\frac{(2n+2)(2n+1)}{(n+1)^2} = \lim\limits_{n\to\infty} \frac{4n^2+6n+2}{n^2+2n+1} = 4,
+			$$
+			e a série converge para todo $z\in D(0,4)$.
+			
+			\item Temos que o raio $R$ de convergência é
+			$$
+			R = \frac{1}{\lim\limits_{n\to\infty} \left| \left( 1+\frac{1}{n} \right)^n \right|^{1/n} } = \frac{1}{\lim\limits_{n\to\infty} 1 + \frac{1}{n}} = 1,
+			$$
+			e a série converge para todo $z\in D(0,1)$.
+			
+			\item Temos que o raio $R$ de convergência é
+			$$
+			R = \frac{1}{\lim\limits_{n\to\infty} \left| \left( 1+\frac{1}{n} \right)^{n^2} \right|^{1/n} } = \frac{1}{\lim\limits_{n\to\infty} \left(1 + \frac{1}{n}\right)^n} = \frac{1}{e},
+			$$
+			e a série converge para todo $z\in D(0,1/e)$.
+			
+			\item Temos que o raio $R$ de convergência é
+			$$
+			R = \frac{1}{\lim\limits_{n\to\infty} \left| \left( 1-\frac{1}{n} \right)^n \right|^{1/n} } = \frac{1}{\lim\limits_{n\to\infty} 1 - \frac{1}{n}} = 1,
+			$$
+			e a série converge para todo $z\in D(0,1)$.
+			
+			\item Temos que o raio $R$ de convergência é
+			$$
+			R = \frac{1}{\lim\limits_{n\to\infty}\left| n^{\ln(n)} \right|^{1/n}} = \frac{1}{\lim\limits_{n\to\infty} e^{\frac{\ln^2(n)}{n}}} = \frac{1}{\exp\left( \lim\limits_{n\to\infty} \frac{\ln^2(n)}{n} \right)} = \frac{1}{\exp\left(\lim\limits_{n\to\infty} 2\frac{\ln(n)}{n} \right)} = 1,
+			$$
+			e a série converge para todo $z\in D(0,1)$.
+			
+			\item Temos que o raio $R$ de convergência é
+			$$
+			R = \frac{1}{\lim\limits_{n\to\infty} |\frac{1}{\ln(n)^n}|^{1/n} } = \lim\limits_{n\to\infty} |\ln(n)| = +\infty, 
+			$$
+			de modo que a série converge para todo $z\in\mathbb{C}$.
+			\end{enumerate} 
+		
+		\item[25.] Supondo que $|z|<1$, podemos escrever
+		\begin{align*}
+		\frac{1}{1-z}f(z) &= \left(\sum_{n=0}^{\infty}z^n\right)\cdot\left(\sum_{n=0}^{\infty}a_nz^n\right) \\
+		&= \sum_{n=0}^{\infty}(a_0+a_1+\cdots+a_n)z^n
+		\end{align*}
+		pela Proposição 2.7.
+		
+		\item[30.] 
+		\begin{itemize}
+			\item Temos que $0$ é o único ponto aderente de 
+			$$
+			\sqrt[n]{|a_n|} = \begin{cases}
+			\displaystyle{\sqrt[n]{\frac{(n!)^2}{(2n)!}}}, n \text{ par} \\
+			0, \text{ c.c.}
+			\end{cases},
+			$$
+			de modo que 
+			$$
+			\limsup\sqrt[n]{|a_n|} = 0
+			$$
+			e
+			$$
+			R = \infty,
+			$$
+			e a série converge em todo $\mathbb{C}$.
+			
+			\item Temos que os pontos aderentes de 
+			$$
+			\sqrt[n]{|a_n|} = \begin{cases}
+			\displaystyle{1+\frac{1}{n}}, n \text{ quadrado perfeito} \\
+			0, \text{ c.c.}
+			\end{cases},
+			$$
+			são $0$ e $1$, de modo que 
+			$$
+			\limsup\sqrt[n]{|a_n|} = 1
+			$$
+			e
+			$$
+			R = 1,
+			$$
+			e a série converge para todo $z\in D(0,1)$.
+			
+			\item Temos que os pontos aderentes de 
+			$$
+			\sqrt[n]{|a_n|} = \begin{cases}
+			\displaystyle{\left(1+\frac{1}{n}\right)^n}, n \text{ quadrado perfeito} \\
+			0, \text{ c.c.}
+			\end{cases},
+			$$
+			são $0$ e $e$, de modo que 
+			$$
+			\limsup\sqrt[n]{|a_n|} = e
+			$$
+			e
+			$$
+			R = \frac{1}{e},
+			$$
+			e a série converge para todo $z\in D(0,1/e)$.
+		\end{itemize}
+	\end{enumerate}
+\end{document}

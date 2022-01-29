@@ -1,0 +1,566 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{makeidx,graphics}
+\usepackage[dvips]{graphicx}
+%\usepackage[latin1]{inputenc}
+%\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{ae}
+\usepackage{indentfirst}
+\usepackage{amsbsy}
+\usepackage{fancyhdr}
+\usepackage{pstricks}
+\usepackage[all]{xy}
+\usepackage{wrapfig}
+\usepackage[pdfstartview=FitH,backref,colorlinks,bookmarksnumbered,bookmarksopen,linktocpage,urlcolor=blue,
+linkcolor=cyan]{hyperref}
+\usepackage{bussproofs}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{amsbsy}
+\usepackage{url}
+\usepackage{float} 
+%\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+\usepackage[shortlabels]{enumitem}
+\usepackage{esint}
+\usepackage{multicol}
+
+\newtheorem{definition}{Definição}
+%\newtheorem{example}{Exemplo}
+\newtheorem{lema}{Lema}
+\newtheorem{teorema}{Teorema}
+\newtheorem{corolario}{Corolário}
+\newtheorem*{obs}{Observação}
+
+\setlength{\topmargin}{-1.0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textheight}{10.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\baselineskip}{12mm}
+
+\newcommand{\dx}{\ \mathrm{d} x }
+\newcommand{\dy}{\ \mathrm{d} y }
+\newcommand{\dz}{\ \mathrm{d} z }
+\newcommand{\du}{\ \mathrm{d} u }
+\newcommand{\dv}{\ \mathrm{d} v }
+\newcommand{\dr}{\ \mathrm{d} r }
+\newcommand{\dt}{\ \mathrm{d} t }
+\newcommand{\dteta}{\ \mathrm{d} \theta }
+\newcommand{\dro}{\ \mathrm{d} \rho }
+\newcommand{\dfi}{\ \mathrm{d} \phi }
+\newcommand{\ds}{\ \mathrm{d} s }
+\newcommand{\dS}{\ \mathrm{d} S }
+\newcommand{\dq}{\ \mathrm{d} q }
+\newcommand{\dif}{\mathrm{d}}
+\newcommand{\res}{\mathrm{res}}
+
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\diverg}{div}
+
+\graphicspath{{img/}}
+
+\renewcommand{\sectionmark}[1]{ \markright{ \thesection.\ #1}}
+
+\title{\textbf{Variável Complexa 1}\\ Lista 8}
+\author{Caio Tomás de Paula}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\begin{enumerate}	
+		\item\begin{enumerate}[(i)]
+			\item Vamos começar expandindo $f$ em torno de $0$, expansão válida em $A(0,0,1)$. Temos
+			\begin{align*}
+			\frac{1}{z} = \frac{1}{i}\cdot\frac{1}{1 - iz} = \frac{1}{i}\sum_{n=0}^{\infty}i^nz^n = -\sum_{n=0}^{\infty}i^{n+1}z^n.
+			\end{align*}
+			Logo,
+			\begin{align*}
+			f(z) = -\frac{1}{z^2}\sum_{n=0}^{\infty}i^{n+1}z^n = -\frac{i}{z^2} + \frac{1}{z} + \sum_{k=0}^{\infty}i^{k+3}z^{k+2} \ \text{ em } \ A(0,0,1).
+			\end{align*}
+			Agora, vamos expandir $f$ em torno de $-i$, expansão válida em $A(-i,0,1)$. Temos
+			\begin{align*}
+			\frac{1}{z} = \frac{1}{-i + (z+i)} = \frac{1}{-i}\cdot\frac{1}{1 - \frac{z+i}{i}} = -\frac{1}{i}\sum_{n=0}^{\infty}\frac{(z+i)^n}{i^n} = -\sum_{n=0}^{\infty}\frac{(z+i)^n}{i^{n+1}}.
+			\end{align*}
+			Derivando ambos os lados da igualdade, segue que
+			\begin{align*}
+			\frac{1}{z^2} = \sum_{m=0}^{\infty}\frac{(m+1)(z+i)^{m}}{i^{m+2}},
+			\end{align*}
+			logo
+			\begin{align*}
+			f(z) = \frac{1}{z+i}\sum_{m=0}^{\infty}\frac{(m+1)(z+i)^{m}}{i^{m+2}} = -\frac{1}{z+i} + \sum_{k=0}^{\infty}\frac{k+2}{i^{k+3}}(z+i)^{k+1} \ \text{ em } \ A(-i,0,1).
+			\end{align*}
+			
+			\item Vamos expandir $f$ em torno de $1$, expansão válida em $A(1,0,\sqrt{2})$. Temos
+			\begin{align*}
+			\frac{1}{z+i} = \frac{1}{(1+i) + (z-1)} = \frac{1}{1+i}\cdot\frac{1}{1 + \frac{z-1}{1+i}} = \frac{1}{1+i}\sum_{n=0}^{\infty}\frac{(-1)^n}{(1+i)^n}(z-1)^n.
+			\end{align*}
+			Logo
+			\begin{align*}
+			f(z) = \frac{1}{z-1}\cdot\frac{1}{1+i}\sum_{n=0}^{\infty}\frac{(-1)^n}{(1+i)^n}(z-1)^n = \frac{1}{1+i}\cdot\frac{1}{z-1} + \sum_{k=0}^{\infty}\frac{(-1)^{k+1}}{(1+i)^{k+1}}(z-1)^k.
+			\end{align*}
+			Agora, em torno de $-i$, expansão válida em $A(-i,0,\sqrt{2})$. Temos
+			\begin{align*}
+			\frac{1}{z-1} = \frac{1}{(-1-i) + (z+i)} = \frac{1}{-1-i}\cdot\frac{1}{1 - \frac{z+i}{1+i}} = -\frac{1}{1+i}\sum_{n=0}^{\infty}\frac{1}{(1+i)^n}(z+i)^n.
+			\end{align*}
+			Logo
+			\begin{align*}
+			f(z) = \frac{1}{z+i}\cdot\frac{-1}{1+i}\sum_{n=0}^{\infty}\frac{1}{(1+i)^n}(z+i)^n = \frac{-1}{1+i}\cdot\frac{1}{z+i} + \sum_{k=0}^{\infty}\frac{1}{(1+i)^{k+1}}(z+i)^k.
+			\end{align*}
+						
+			\item Como
+			$$
+			e^{1/z} = \sum_{n=0}^{\infty}\frac{1}{z^nn!},
+			$$
+			temos que 
+			$$
+			z^3e^{1/z} = z^3\sum_{n=0}^{\infty}\frac{1}{z^nn!} = \sum_{m=1}^{\infty}\frac{1}{(m+3)!}\cdot\frac{1}{z^{m+3}} + z^3 + z^2 + \frac{z}{2} + \frac{1}{6}
+			$$
+			é a expansão desejada, válida em $A(0,0,\infty)$
+			
+			\item Como 
+			$$
+			\cos(z) = \sum_{n=0}^{\infty}(-1)^n\frac{z^{2n}}{(2n)!},
+			$$
+			segue que
+			$$
+			\cos(1/z) = \sum_{n=0}^{\infty}\frac{(-1)^n}{(2n)!}\cdot\frac{1}{z^{2n}} = \sum_{n=1}^{\infty}\frac{(-1)^n}{(2n)!}\cdot\frac{1}{z^{2n}} + 1
+			$$
+			é a expansão em série de Laurent de $f$ em torno de $0$, válida no anel $A(0,0,\infty)$.
+			
+			\item Vamos começar expandido $f$ em torno de $\sqrt{2}$, expansão válida em $A(\sqrt{2},0,2\sqrt{2})$. Temos
+			\begin{align*}
+			\frac{1}{z+\sqrt{2}} = \frac{1}{2\sqrt{2} + (z-\sqrt{2})} = \frac{1}{2\sqrt{2}}\cdot\frac{1}{1 + \frac{z-\sqrt{2}}{2\sqrt{2}}} = \sum_{n=0}^{\infty}\frac{(-1)^n}{(2\sqrt{2})^{n+1}}(z-\sqrt{2})^n.
+			\end{align*}
+			Derivando ambos os lados da igualdade, temos
+			\begin{align*}
+			\frac{1}{(z+\sqrt{2})^2} = \sum_{n=1}^{\infty}\frac{n(-1)^{n+1}}{(2\sqrt{2})^{n+1}}(z-\sqrt{2})^{n-1}.
+			\end{align*}
+			Logo,
+			\begin{align*}
+			\frac{1}{(z-\sqrt{2})^2(z+\sqrt{2})^2} = \sum_{n=1}^{\infty}\frac{n(-1)^{n+1}}{(2\sqrt{2})^{n+1}}(z-\sqrt{2})^{n-3}.
+			\end{align*}
+			Agora, do binômio de Newton, temos
+			\begin{align*} 
+			z^5 &= (z-\sqrt{2} + \sqrt{2})^5 \\ 
+			&= (z-\sqrt{2})^5 + 5\sqrt{2}(z-\sqrt{2})^4 + 20(z-\sqrt{2})^3 + 20\sqrt{2}(z-\sqrt{2})^2 + 20(z-\sqrt{2}) + 4\sqrt{2},
+			\end{align*}
+			de modo que 
+			\begin{align*}
+			f(z) = \sum_{n=1}^{\infty}\frac{n(-1)^{n+1}}{(2\sqrt{2})^{n+1}} [(z-\sqrt{2})^{n+2} &+ 5\sqrt{2}(z-\sqrt{2})^{n+1} + 20(z-\sqrt{2})^n + \\ 
+			&+ 20\sqrt{2}(z-\sqrt{2})^{n-1} + 20(z-\sqrt{2})^{n-2} + 4\sqrt{2}(z-\sqrt{2})^{n-3} ] 
+			\end{align*} 
+			e obtemos
+			\begin{align*}
+			f(z) &= \frac{1}{8}\left[ \frac{4\sqrt{2}}{(z-\sqrt{2})^2} + \frac{20}{z-\sqrt{2}} \right] - \frac{1}{8\sqrt{2}}\cdot\frac{4\sqrt{2}}{z-\sqrt{2}} + \mathcal{A} \\
+			&= \frac{1}{\sqrt{2}}\cdot\frac{1}{(z-\sqrt{2})^2} + 2\cdot\frac{1}{z-\sqrt{2}} + \mathcal{A},
+			\end{align*}
+			sendo 
+			\begin{align*}
+			\mathcal{A} = \sum_{n=3}^{\infty}\frac{n(-1)^{n+1}}{(2\sqrt{2})^{n+1}} [(z-\sqrt{2})^{n+2} &+ 5\sqrt{2}(z-\sqrt{2})^{n+1} + 20(z-\sqrt{2})^n + \\ 
+			&+ 20\sqrt{2}(z-\sqrt{2})^{n-1} + 20(z-\sqrt{2})^{n-2} + 4\sqrt{2}(z-\sqrt{2})^{n-3} ]
+			\end{align*}			
+			
+			Agora, em torno de $-\sqrt{2}$, expansão válida em $A(-\sqrt{2},0,2\sqrt{2})$. Temos
+			\begin{align*}
+			\frac{1}{z-\sqrt{2}} = \frac{1}{-2\sqrt{2} + (z+\sqrt{2})} = \frac{1}{-2\sqrt{2}}\cdot\frac{1}{1 - \frac{z+\sqrt{2}}{2\sqrt{2}}} = -\sum_{n=0}^{\infty}\frac{1}{(2\sqrt{2})^{n+1}}(z+\sqrt{2})^n.
+			\end{align*}
+			Derivando ambos os lados da igualdade, temos
+			\begin{align*}
+			\frac{1}{(z-\sqrt{2})^2} = \sum_{n=1}^{\infty}\frac{n}{(2\sqrt{2})^{n+1}}(z+\sqrt{2})^{n-1}.
+			\end{align*}
+			Logo,
+			\begin{align*}
+			\frac{1}{(z-\sqrt{2})^2(z+\sqrt{2})^2} = \sum_{n=1}^{\infty}\frac{n}{(2\sqrt{2})^{n+1}}(z+\sqrt{2})^{n-3}
+			\end{align*}
+			Agora, do binômio de Newton, temos
+			\begin{align*} 
+			z^5 &= (z+\sqrt{2} - \sqrt{2})^5 \\ 
+			&= (z+\sqrt{2})^5 - 5\sqrt{2}(z+\sqrt{2})^4 + 20(z+\sqrt{2})^3 - 20\sqrt{2}(z+\sqrt{2})^2 + 20(z+\sqrt{2}) - 4\sqrt{2},
+			\end{align*}
+			de modo que 
+			\begin{align*}
+			f(z) = \sum_{n=1}^{\infty}\frac{n}{(2\sqrt{2})^{n+1}} [(z+\sqrt{2})^{n+2} &- 5\sqrt{2}(z+\sqrt{2})^{n+1} + 20(z+\sqrt{2})^n - \\ 
+			&- 20\sqrt{2}(z+\sqrt{2})^{n-1} + 20(z+\sqrt{2})^{n-2} - 4\sqrt{2}(z+\sqrt{2})^{n-3} ] 
+			\end{align*} 
+			e obtemos
+			\begin{align*}
+			f(z) &= \frac{1}{8}\left[ \frac{-4\sqrt{2}}{(z+\sqrt{2})^2} + \frac{20}{z+\sqrt{2}} \right] + \frac{1}{8\sqrt{2}}\cdot\frac{-4\sqrt{2}}{z+\sqrt{2}} + \mathcal{B} \\
+			&= -\frac{1}{\sqrt{2}}\cdot\frac{1}{(z+\sqrt{2})^2} + 2\cdot\frac{1}{z+\sqrt{2}} + \mathcal{B},
+			\end{align*}
+			sendo 
+			\begin{align*}
+			\mathcal{B} = \sum_{n=3}^{\infty}\frac{n}{(2\sqrt{2})^{n+1}} [(z+\sqrt{2})^{n+2} &- 5\sqrt{2}(z+\sqrt{2})^{n+1} + 20(z+\sqrt{2})^n - \\ 
+			&- 20\sqrt{2}(z+\sqrt{2})^{n-1} + 20(z+\sqrt{2})^{n-2} - 4\sqrt{2}(z+\sqrt{2})^{n-3} ]
+			\end{align*}
+			
+		\end{enumerate}
+		
+		\item Seja $f:\mathbb{C}\to\mathbb{C}$ a referida função. Pelo Teorema de Laurent, podemos escrever
+		\begin{align*} 
+		f(z) &= \sum_{m=1}^{k}\frac{b_m}{(z-a)^m} + \sum_{n=0}^{\infty}a_n(z-a)^n \\ &= \frac{(z-a)^k}{b_k + b_{k-1}(z-a) + \cdots + b_2(z-a)^{k-2} + b_1(z-a)^{k-1}} +  \sum_{n=0}^{\infty}a_n(z-a)^n,
+		\end{align*} 
+		em que a primeira parcela é uma função racional e a segunda, holomorfa.
+		
+		
+		\item Tome 
+		$$
+		f(z) = \frac{1}{(z-2)(z-i\sqrt{2})^7}.
+		$$
+		Note que
+		\begin{align*}
+		\lim\limits_{z\to 2}(z-2)f(z) &= L\neq 0, \\
+		\lim\limits_{z\to i\sqrt{2}}(z-i\sqrt{2})^7f(z) &= M\neq 0,
+		\end{align*}
+		de modo que $2$ é polo de ordem $1$ e $i\sqrt{2}$ é polo de ordem $7$, como desejado.
+		
+		\item 
+%		Note que
+%		$$
+%		\frac{1}{2\pi i}\int_{\gamma}\frac{f'(z)}{f(z)}dz = 0,
+%		$$
+%		sendo $\gamma$ uma curva de Jordan suave por partes, pois $f$ não se anula em $\mathbb{C}$. Além disso, como $\displaystyle{\lim\limits_{z\to\infty}f(z) = L\neq 0}$, o integrando está bem definido independente do caminho $\gamma$ escolhido. Logo, a integral acima é nula para toda curva $\gamma$, de modo que o integrando é identicamente nulo e $f'(z) \equiv 0$, i.e., $f$ é constante.
+		
+		Podemos escrever, usando a Fórmula Integral de Cauchy,
+		$$
+		f(z) = \frac{1}{2\pi i}\int_{\Gamma} \frac{f(w)}{w-z}dw = \frac{1}{2\pi}\int_{0}^{2\pi}f(z+re^{it})dt,
+		$$
+		sendo $\Gamma(t) = z+re^{it}, 0\leq t\leq 2\pi$. Daí, temos
+		$$
+		|f(z)| \leq \frac{1}{2\pi}\int_{0}^{2\pi}|f(z+re^{it})|dt \xrightarrow{r\to +\infty} \frac{1}{2\pi}\cdot 2\pi|L| = |L|.
+		$$
+		Logo, $|f|$ é limitado e, pelo Teorema de Liouville, $f$ é constante.
+		
+		\item Se $f|g$, então $g(z) = h(z)f(z)$, sendo $h$ holomofa em $U$. Daí, sendo $k$ uma função qualquer holomorfa em $U$, temos $k(z)g(z)/f(z) = k(z)h(z)$ holomorfa em $U$ e $\res(kg/f,0) = 0$.
+		
+		Se $\res(kg/f,0) = 0$ para toda $k$ holomorfa em $U$, tomemos $k(z)\equiv 1$. Daí, como $0$ é a única (contada com multiplicidade) raiz de $f$ em $U$, temos
+		$$
+		f(z) = zq(z), \ \text{ com } q(z)\neq 0 \ \forall z\in U,
+		$$ 
+		de modo que 
+		$$
+		\lim\limits_{z\to 0}\frac{g(z)}{f(z)} = \lim\limits_{z\to 0} \frac{g(z)}{zq(z)}
+		$$
+		existe. De fato, se $g(0)\neq 0$ então
+		$$
+		\lim\limits_{z\to 0} z\frac{g(z)}{f(z)} = \lim\limits_{z\to 0}\frac{g(z)}{q(z)} = L\neq 0,
+		$$
+		e $0$ seria polo de ordem $1$ de $g/f$, absurdo pois $\res(g/f,0) = 0$. Logo, $g(0) = 0$ e o primeiro limite existe (podendo ser nulo). Portanto, temos, pelo Teorema de Laurent
+		$$
+		\frac{g(z)}{f(z)} = \sum_{n=0}^{\infty}a_nz^n = h(z) \iff g(z) = h(z)f(z),
+		$$
+		$h$ holomorfa em $U$, e $f|g$.
+		
+		\item\begin{enumerate}[(i)]
+			\item Note que
+			$$
+			\lim\limits_{z\to 0} \sin\left(\frac{1}{z}\right)
+			$$
+			não existe e que 
+			$$
+			\lim\limits_{z\to 0} z^k\sin\left(\frac{1}{z}\right),
+			$$
+			com $k$ inteiro positivo é sempre nulo. Logo, $0$ é singularidade essencial de $f$.
+			
+			\item Note que
+			$$
+			\lim\limits_{z\to 0}\frac{\cos z - 1}{z^2} \stackrel{\text{L'H}}{=} \lim\limits_{z\to 0}\frac{-\sin z}{2z} = -\frac{1}{2},
+			$$
+			logo $0$ é singularidade removível de $f$.
+			
+			\item Note que
+			$$
+			\lim\limits_{z\to 0}z\frac{\sin^2 z}{z^3} = \lim\limits_{z\to 0}\frac{\sin^2 z}{z^2} = 1,
+			$$
+			logo $0$ é polo de ordem $1$ de $f$.
+			
+			\item Note que
+			$$
+			\lim\limits_{z\to 0}\exp\left(z+\frac{1}{z}\right)
+			$$
+			não existe e que
+			$$
+			\lim\limits_{z\to 0}z^k\exp\left(z+\frac{1}{z}\right),
+			$$
+			com $k$ inteiro positivo, também não existe, pois $f\xrightarrow{z\to 0^+}+\infty$ e $f\xrightarrow{z\to 0^-} 0$. Logo, $0$ é singularidade essencial de $f$.
+			
+			\item Note que
+			$$
+			\lim\limits_{z\to 0}z\cdot\frac{1}{z^8 - z} = \lim\limits_{z\to 0}\frac{1}{z^7-1} = -1,
+			$$
+			logo $0$ é polo de ordem $1$ de $f$.
+			
+			\item Note que 
+			$$
+			\lim\limits_{z\to 0}z^4\cdot\frac{\cos z}{z^4} = \lim\limits_{z\to 0}\cos z = 1,
+			$$
+			logo $0$ é polo de ordem $4$ de $f$.
+		\end{enumerate}
+		
+		\item Sejam $P(z) = \alpha z^n - e^z$ e $Q(z) = \alpha z^n$. Em $|z| = 1$, temos
+		$$
+		\left| \frac{Q(z) - P(z)}{Q(z)} \right| = \left| \frac{e^z}{\alpha z^n} \right| = \left| \frac{e^z}{\alpha} \right| = \frac{e^{\Re(z)}}{|\alpha|} < e^{\Re(z) - 1} \leq 1,
+		$$
+		de modo que, pelo Teorema de Rouché, $P(z)$ tem $n$ raízes no disco $|z| < 1$, já que $Q(z)$ tem $n$ raízes no interior do mesmo disco.
+		
+		\item\begin{enumerate}[(i)]
+			\item Sejam $P(z) = z^9 - 2z^6 + z^2 - 8z - 2$ e $Q(z) = -8z - 2$. Em $\partial D(0,1)$, i.e., em $|z|=1$, temos
+			\begin{align*}
+			\left| \frac{Q(z) - P(z)}{Q(z)} \right| = \left| \frac{z^9 - 2z^6 + z^2}{-8z-2} \right| \stackrel{\text{Ex.7-Cap.1}}{\leq} \frac{|z^9 - 2z^6 + z^2|}{|8|z| - 2|} \stackrel{\text{Des. Triang.}}{\leq} \frac{1+2+1}{6} < 1,
+			\end{align*}
+			de modo que, pelo Teorema de Rouché, $P(z)$ tem apenas uma raiz em $|z|<1$, já que $Q(z)$ só tem uma raiz nesse disco.
+			
+			\item Sejam $P(z) = z^4 - 5z + 1$ e $Q(z) = -5z + 1$. Em $\partial D(0,1)$, i.e., em $|z|=1$, temos
+			\begin{align*}
+			\left| \frac{Q(z) - P(z)}{Q(z)} \right| = \left| \frac{z^4}{1-5z} \right| \stackrel{\text{Ex.7-Cap.1}}{\leq} \frac{|z^4|}{|1 - 5|z||} = \frac{1}{4} < 1,
+			\end{align*}
+			de modo que, pelo Teorema de Rouché, $P(z)$ tem apenas uma raiz em $|z|<1$, já que $Q(z)$ só tem uma raiz nesse disco.
+		\end{enumerate}
+		
+		\item\begin{enumerate}[(i)]
+			\item Temos que o limite
+			$$
+			\lim\limits_{z\to 0}z^k\frac{\sin(z)}{z^4} = \lim\limits_{z\to 0}z^{k-4}\sin(z)
+			$$
+			existe e é não nulo apenas para $k=4$. Logo, $0$ é um polo de ordem $4$ de $f$ e temos que
+			$$
+			\res(f,0) = \frac{\sin^{(3)}(z)}{3!}\Bigg|_{z=0} = -\frac{1}{6}.
+			$$
+			
+			\item Temos que o limite
+			$$
+			\lim\limits_{z\to 0}z^k\frac{e^{-z}}{z^{n+1}} = \lim\limits_{z\to 0}z^{k-(n+1)}e^{-z}
+			$$
+			existe e é não nulo apenas para $k=n+1$. Logo, $0$ é um polo de ordem $n+1$ de $f$ e temos que
+			$$
+			\res(f,0) = \frac{\exp^{(n)}(-z)}{n!}\Bigg|_{z=0} = \frac{(-1)^n\exp(-z)}{n!}\Bigg|_{z=0} = \frac{(-1)^n}{n!}.
+			$$
+			
+			\item Temos que o limite
+			$$
+			\lim\limits_{z\to 0}z^k\frac{\cos(z)}{z^3(z-1)} = \lim\limits_{z\to 0}z^{k-3}\frac{\cos(z)}{z-1}
+			$$
+			existe e é não nulo apenas para $k=3$. Logo, $0$ é um polo de ordem $3$ de $f$ e temos que
+			$$
+			\res(f,0) = \frac{1}{2}\cdot\left(\frac{\cos(z)}{z-1}\right)''\Bigg|_{z=0} = \frac{1}{2}\cdot\left[ 2\frac{\sin z}{(z-1)^2} - \frac{\cos z}{z-1} + 2\frac{\cos z}{(z-1)^3} \right]\Bigg|_{z=0} = -\frac{1}{2}.
+			$$
+			
+			\item Temos que o limite
+			$$
+			\lim\limits_{z\to 1}(z-1)^k\frac{1}{z^4(1-z)} = \lim\limits_{z\to 1}(z-1)^{k-1}\frac{-1}{z^4}
+			$$
+			existe e é não nulo apenas para $k=1$. Logo, $1$ é um polo de ordem $1$ de $f$ e temos que
+			$$
+			\res(f,1) = \lim\limits_{z\to 1}(z-1)\frac{1}{z^4(1-z)} = -1.
+			$$
+			
+			\item Temos que o limite
+			$$
+			\lim\limits_{z\to 1}(z-1)^k\frac{\sin(1/z)}{z^4(1-z)} = \lim\limits_{z\to 1}(z-1)^{k-1}\frac{-\sin(1/z)}{z^4}
+			$$
+			existe e é não nulo apenas para $k=1$. Logo, $1$ é um polo de ordem $1$ de $f$ e temos que
+			$$
+			\res(f,1) = \lim\limits_{z\to 1}(z-1)\frac{\sin(1/z)}{z^4(1-z)} = -\sin(1).
+			$$
+			
+			\item Temos que o limite
+			$$
+			\lim\limits_{z\to 0}z^k\frac{z}{1-\cos(z)} \stackrel{\text{L'H}(\times 2)}{=} k(k+1)\lim\limits_{z\to 0}\frac{z^{k-1}}{\cos(z)}
+			$$
+			existe e é não nulo apenas para $k=1$. Logo, $0$ é polo de ordem $1$ de $f$ e temos que
+			$$
+			\res(f,0) = 2\lim\limits_{z\to 0}\frac{1}{\cos(z)} = 2.
+			$$
+			
+			\item Note que a série de Laurent de $f$ em $0$ é
+			\begin{align*}
+			f(z) = \frac{1-e^{3z}}{z^4} = \frac{1}{z^4} - \frac{1}{z^4}\sum_{n=0}^{\infty}\frac{3^nz^n}{n!},
+			\end{align*}
+			e o coeficiente de $1/z$, i.e., o resíduo de $f$ em $0$, é obtido com $n=3$:
+			$$
+			\res(f,0) = -\frac{3^3}{6} = -\frac{9}{2}.
+			$$
+			
+			\item Temos que o limite
+			$$
+			\lim\limits_{z\to 1}(z-1)^k\frac{e^{2z}}{z^4(1-z)} = \lim\limits_{z\to 1}(z-1)^{k-1}\frac{-e^{2z}}{z^4}
+			$$
+			existe e é não nulo apenas para $k=1$. Logo, $1$ é um polo de ordem $1$ de $f$ e temos que
+			$$
+			\res(f,1) = \lim\limits_{z\to 1}(z-1)\frac{e^{2z}}{z^4(1-z)} = -e^2.
+			$$
+		\end{enumerate}
+	\item\begin{enumerate}[(i)]
+		\item Sejam $P(z) = z^2$ e $Q(z) = (z^2+1)(z^2+5)$. Note que $2+\text{grau}(P) = \text{grau}(Q)$. Daí, recaímos no Caso I, i.e., temos
+		$$
+		\int_{-\infty}^{+\infty}\frac{x^2}{(x^2+1)(x^2+5)}dx = 2\pi i\sum_a\res\left( \frac{P(z)}{Q(z)},a \right),
+		$$
+		em que $a$ são os polos de $f(z) = P(z)/Q(z)$ no semiplano superior. Agora, note que os polos de $f$ são $\pm i$ e $\pm i\sqrt{5}$, dos quais $i$ e $i\sqrt{5}$ estão no semiplano superior e ambos são de ordem $1$. Daí, segue que
+		\begin{align*}
+		\res(f(z), i) &= \lim\limits_{z\to i}(z-i)f(z) = \frac{i}{8} \\
+		\res(f(z), i\sqrt{5}) &= \lim\limits_{z\to i\sqrt{5}}(z-i\sqrt{5})f(z) = \frac{-i\sqrt{5}}{8},
+		\end{align*}
+		de modo que
+		$$
+		\int_{-\infty}^{+\infty}\frac{x^2}{(x^2+1)(x^2+5)}dx = 2\pi i\sum_a\res\left( \frac{P(z)}{Q(z)},a \right) = 2\pi i\left( \frac{i}{8} - \frac{i\sqrt{5}}{8}\right) = \pi\frac{\sqrt{5 - 1}}{4}.
+		$$
+		
+		\item Seja $f(z) = 1/(z^4+1)$. Temos $f(z) = P(z)/Q(z)$, com o grau de $Q(z)$ excedendo o grau de $P(z)$ em $4$ unidades. Logo, recaímos no Caso I e temos
+		$$
+		\int_{-\infty}^{+\infty}\frac{1}{x^4+1}dx = 2\pi i\sum_a\res\left( f(z),a \right),
+		$$
+		sendo $a$ os polos de $f(z)$ no semiplano superior. Ora, os polos de $f$, todos de ordem $1$, são as raízes quartas de $-1$:
+		$$
+		z_0 = e^{i\pi/4}, z_1 = e^{3i\pi/4}, z_2 = e^{5i\pi/4}, z_3 = e^{7i\pi/4},
+		$$
+		das quais apenas $z_0$ e $z_1$ estão no semiplano superior. Além disso, temos
+		\begin{align*}
+		\res(f,z_0) &= \lim\limits_{z\to z_0}(z-z_0)f(z) = \frac{\sqrt{2}}{8i}(1-i) \\
+		\res(f,z_1) &= \lim\limits_{z\to z_1}(z-z_1)f(z) = \frac{\sqrt{2}}{8i}(1+i),
+		\end{align*}
+		e obtemos
+		$$
+		\int_{-\infty}^{+\infty}\frac{x^2}{(x^2+1)(x^2+5)}dx = 2\pi i\sum_a\res\left(f(z),a \right) = 2\pi i\left( \frac{\sqrt{2}}{8i}(1-i) + \frac{\sqrt{2}}{8i}(1+i) \right) = \pi\frac{\sqrt{2}}{2}.
+		$$
+		
+		\item Seja $f(z) = 1/(z^2+1)^2$. Temos $f(z) = P(z)/Q(z)$, com o grau de $Q(z)$ excedendo o grau de $P(z)$ em $4$ unidades. Logo, recaímos no Caso I e temos
+		$$
+		\int_{-\infty}^{+\infty}\frac{1}{(x^2+1)^2}dx = 2\pi i\sum_a\res\left( f(z),a \right),
+		$$
+		sendo $a$ os polos de $f(z)$ no semiplano superior. Ora, os polos de $f$ são $i$ e $-i$, cada um de ordem $2$. Deles, apenas $i$ está no semiplano superior. Daí, como
+		$$
+		\res(f(z),i) = \left( (z-i)^2f(z) \right)'\Big|_{z=i} = \left( \frac{1}{(z+i)^2} \right)'\Big|_{z=i} = -\frac{2}{(2i)^3} = \frac{1}{4i},
+		$$
+		temos
+		$$
+		\int_{-\infty}^{+\infty}\frac{1}{(x^2+1)^2}dx = 2\pi i\sum_a\res\left( f(z),a \right) = 2\pi i\frac{1}{4i} = \frac{\pi}{2}.
+		$$
+		
+		\item Seja $\gamma = \gamma_1\ast\gamma_2$, sendo $\gamma_1(t) = t, -r\leq t\leq r$ e $\gamma_2(t) = re^{it}, 0\leq t\leq\pi$, com $r>1$. Daí, $f(z) = e^{iz}/z^2+1$ tem um polo de ordem $1$ no interior da região determinada por $\gamma$ e segue, pelo Teorema do Resíduo, que
+		$$
+		\int_{\gamma}\frac{e^{iz}}{z^2+1}dz = 2\pi i\res\left( f(z), i \right) = \frac{\pi}{e},
+		$$
+		donde temos, separando a integral em $\gamma$, que
+		$$
+		\int_{-r}^{r}\frac{e^{ix}}{x^2+1}dx = \frac{\pi}{e} - \int_{\gamma_2}\frac{e^{iz}}{z^2+1}dz.
+		$$
+		Ora, mas
+		\begin{align*}
+		\left|\int_{\gamma_2}\frac{e^{iz}}{z^2+1}dz \right| &= \left|\int_{0}^{\pi}\frac{e^{ire^{it}}}{r^2e^{i2t} + 1}ire^{it}dt\right| \\
+		&\leq \int_{0}^{\pi}\left| \frac{e^{ir\cos t -r\sin t}}{r^2e^{i2t} + 1} \right|dt \\
+		\stackrel{\text{2 Des. Triang.}}{\leq}& \int_{0}^{\pi}\frac{e^{-r\sin t}}{r^2-1}dt,
+		\end{align*}
+		e, portanto, essa integral vai a zero quando $r\to\infty$. Logo, obtemos
+		$$
+		\int_{-\infty}^{\infty}\frac{e^{ix}}{x^2+1}dx = \lim\limits_{r\to\infty} \int_{-r}^{r}\frac{e^{ix}}{x^2+1}dx = \frac{\pi}{e} - \lim\limits_{r\to\infty}\int_{\gamma_2}\frac{e^{iz}}{z^2+1}dz = \frac{\pi}{e}.
+		$$
+		
+		\item Note que a função a ser integrada é par, de modo que
+		$$
+		\int_{0}^{\infty}\frac{x^2}{(x^2+1)^2}dx = \frac{1}{2}\int_{-\infty}^{\infty}\frac{x^2}{(x^2+1)^2}dx.
+		$$
+		Vamos então calcular a segunda integral. Seja $f(z) = z^2/(z^2+1)^2$. Note que $f(z) = P(z)/Q(z)$, em que o grau de $Q(z)$ excede o grau de $P(z)$ em duas unidades e recaímos no Caso I, ou seja,
+		$$
+		\int_{-\infty}^{\infty}\frac{x^2}{(x^2+1)^2}dx = 2\pi i\sum_a\res(f(z),a),
+		$$
+		sendo $a$ os polos de $f$ no semiplano superior. Ora, os polos de $f$ são $i$ e $-i$, ambos de ordem $2$, e apenas $i$ está no semiplano superior. Agora, como
+		$$
+		\res(f(z),i) = ((z-i)^2f(z))'\Big|_{z=i} = \left( \frac{z^2}{(z+i)^2} \right)'\Bigg|_{z=i} = \left( \frac{2zi}{(z+i)^3} \right)\Bigg|_{z=i} = \frac{1}{4i},
+		$$
+		segue que
+		$$
+		\int_{0}^{\infty}\frac{x^2}{(x^2+1)^2}dx = \frac{1}{2}\int_{-\infty}^{\infty}\frac{x^2}{(x^2+1)^2}dx = \frac{1}{2}\cdot 2\pi i\cdot\frac{1}{4i} = \frac{\pi}{4}.
+		$$
+		
+		\item Note que 
+		$$
+		\int_{-\pi}^{\pi}\frac{1}{1 + \sin^2t}dt = \int_{0}^{2\pi}\frac{1}{1 + \sin^2 u}du,
+		$$
+		basta fazer a mudança de variável $u = \pi - t$. Assim, recaímos no Caso II. Agora, observe que
+		\begin{align*}
+		\int_{0}^{2\pi}\frac{1}{1 + \sin^2 t}dt &= \int_{0}^{2\pi}\frac{1}{2i}\left( \frac{1}{\sin t - i} - \frac{1}{\sin t + i} \right)dt \\ 
+		&= \underbrace{\frac{1}{2i}\int_{0}^{2\pi}\frac{1}{\sin t - i}dt}_{\mathcal{A}} - \underbrace{\frac{1}{2i}\int_{0}^{2\pi}\frac{1}{\sin t + i}dt}_{\mathcal{B}}.
+		\end{align*}
+		Agora, como
+		\begin{align*}
+		\sin t - i &= \frac{e^{it} - e^{-it}}{2i} - i \implies 2i(\sin t - i) = \frac{e^{2it} + 2e^{it} - 1}{e^{it}} \\
+		\sin t + i &= \frac{e^{it} - e^{-it}}{2i} + i \implies 2i(\sin t + i) = \frac{e^{2it} - 2e^{it} - 1}{e^{it}},
+		\end{align*}
+		então
+		\begin{align*}
+		\mathcal{A} - \mathcal{B} &= \int_{0}^{2\pi}\frac{e^{it}}{e^{2it} + 2e^{it} - 1}dt - \int_{0}^{2\pi}\frac{e^{it}}{e^{2it} - 2e^{it} - 1}dt \\
+		&= \frac{1}{i}\int_{\gamma}\underbrace{\frac{1}{z^2 + 2z - 1}}_{f(z)}dz - \frac{1}{i}\int_{\gamma}\underbrace{\frac{1}{z^2 - 2z - 1}}_{g(z)}dz,
+		\end{align*}
+		sendo $\gamma$ o bordo da circunferência unitária de centro na origem orientado no sentido anti-horário. Note agora que 
+		\begin{align*}
+		f(z) &= \frac{1}{(z-(-1+\sqrt{2}))(z-(-1-\sqrt{2}))} \\
+		g(z) &= \frac{1}{(z-(1+\sqrt{2}))(z-(1-\sqrt{2}))},
+		\end{align*}
+		ou seja, $-1\pm\sqrt{2}$ são os polos de $f$ e $1\pm\sqrt{2}$ são os polos de $g$, todos de ordem $1$. Dos polos de $f$, apenas $1-\sqrt{2}$ está no interior de $D(0,1)$ e, dos de $g$, apenas $-1+\sqrt{2}$ está no interior de $D(0,1)$. Calculando os resíduos, temos
+		\begin{align*}
+		\res(f(z),-1+\sqrt{2}) &= \lim\limits_{z\to -1+\sqrt{2}}(z+1-\sqrt{2})f(z) = \frac{1}{2\sqrt{2}} \\
+		\res(g(z),1-\sqrt{2}) &= \lim\limits_{z\to 1-\sqrt{2}}(z-1+\sqrt{2})g(z) = -\frac{1}{2\sqrt{2}},
+		\end{align*}
+		e finalmente, pelo Teorema dos Resíduos, obtemos
+		\begin{align*}
+		\int_{0}^{2\pi}\frac{1}{1 + \sin^2 t}dt &= \mathcal{A} - \mathcal{B} \\
+		&= \frac{1}{i}\cdot 2\pi i\res(f(z),-1+\sqrt{2}) - \frac{1}{i}\cdot 2\pi i\res(g(z),1-\sqrt{2}) \\
+		&= \frac{2\pi}{\sqrt{2}} \\
+		&= \pi\sqrt{2}.
+		\end{align*}	
+		
+		\item Para $z\in\partial D(0,1)$, temos
+		\begin{align*}
+		\cos^3t &= \frac{1}{8}\left( z+\frac{1}{z} \right)^3 = \frac{1}{8}\cdot\frac{1}{z^3}(z^6 + 3z^4 + 3z^2 + 1) = \frac{1}{8i}\cdot f(z)iz \\
+		\sin^5t &= \frac{1}{32i}\cdot\left( z+\frac{1}{z} \right)^5 = \frac{1}{32i}\cdot\frac{1}{z^5}(z^{10} + 5z^8 + 10z^6 + 10z^4 + 5z^2 + 1) = \frac{-1}{32}g(z)iz
+		\end{align*}
+		sendo
+		\begin{align*}
+		f(z) &= \frac{z^6 + 3z^4 + 3z^2 + 1}{z^4}, \\
+		g(z) &= \frac{z^{10} + 5z^8 + 10z^6 + 10z^4 + 5z^2 + 1}{z^6}.
+		\end{align*}
+		Daí, segue que
+		\begin{align*}
+		\int_{0}^{2\pi}2\cos^3t + 4\sin^5tdt &= \frac{1}{4i}\int_{\gamma}f(z)dz - \frac{5}{32}\int_{\gamma}g(z)dz,
+		\end{align*}
+		sendo $\gamma$ o bordo de $D(0,1)$ orientado no sentido anti-horário. Ora, $f$ e $g$ têm polo em $0$ de ordens $4$ e $6$, respectivamente. Daí, segue que
+		\begin{align*}
+		\res(f(z),0) &= \frac{1}{3!}(z^4f(z))'''\Big|_{z=0} = 0 \\
+		\res(g(z),0) &= \frac{1}{5!}(z^6g(z))^{(5)}\Big|_{z=0} = 0,
+		\end{align*}
+		de modo que, pelo Teorema dos Resíduos, obtemos
+		$$
+		\int_{0}^{2\pi}2\cos^3t + 4\sin^5tdt = 0.
+		$$
+		
+		\item Note que a função a ser integrada é par, de modo que
+		$$
+		\int_{0}^{\infty}\frac{x^2}{(x^2+a^2)^3}dx = \frac{1}{2}\int_{-\infty}^{\infty}\frac{x^2}{(x^2+a^2)^3}dx.
+		$$
+		Vamos então calcular a segunda integral. Seja $f(z) = z^2/(z^2+a^2)^3, a>0$. Note que $f(z) = P(z)/Q(z)$, em que o grau de $Q(z)$ excede o grau de $P(z)$ em $4$ unidades. Assim, recaímos no Caso I, i.e., temos
+		$$
+		\int_{-\infty}^{\infty}\frac{x^2}{(x^2+a^2)^3}dx = 2\pi i\sum_a\res(f(z),a),
+		$$
+		sendo $a$ os polos de $f$ no semiplano superior. Note que $f(z)$ tem dois polos de ordem $3$: $ai$ e $-ai$. Desses, apenas $ai$ está no semiplano superior. Assim, como
+		\begin{align*} 
+		\res(f(z),ai) &= \frac{1}{2}\left( (z-ai)^3f(z) \right)''\Bigg|_{z=ai} \\ 
+		&= \frac{1}{2}\left( \frac{1}{2}\left( \frac{z^2}{(z+ai)^3} \right)''\Bigg|_{z=ai}\right) \\ 
+		&= \frac{1}{2}\left(\frac{2}{(2ai)^3} - \frac{12ai}{(2ai)^4} - \frac{12a^2}{(2ai)^5}\right) \\
+		&= \frac{1}{2}\left(\frac{i}{4a^3} - \frac{3i}{4a^3} + \frac{3i}{8a^3}\right) \\
+		&= -\frac{i}{16a^3},
+		\end{align*} 
+		segue que
+		$$
+		\int_{0}^{\infty}\frac{x^2}{(x^2+a^2)^3}dx = \frac{1}{2}\int_{-\infty}^{\infty}\frac{x^2}{(x^2+a^2)^3}dx = \frac{1}{2}\cdot 2\pi i \left( -\frac{i}{16a^3} \right) = \frac{\pi}{16a^3}.
+		$$
+	\end{enumerate}
+	\end{enumerate}
+\end{document}
